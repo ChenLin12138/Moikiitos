@@ -1,0 +1,74 @@
+CREATE DATABASE [IF NOT EXISTS] moikiitos;
+
+USE moikiitos;
+
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_bin NOT NULL,
+  `email` varchar(100) COLLATE utf8_bin NOT NULL,
+  `password` varchar(100) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_UN` (`email`),
+  KEY `users_email_IDX` (`email`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `feeds` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `userid` int(10) unsigned NOT NULL,
+  `content` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE `followrelationship` (
+  `userid` int(10) unsigned NOT NULL,
+  `followid` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`userid`,`followid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+INSERT INTO moikiitos.users
+(name, email, password)
+VALUES('tom', 'tom@test.com', '123');
+
+INSERT INTO moikiitos.users
+(name, email, password)
+VALUES('lucy', 'lucy@test.com', '456');
+
+
+INSERT INTO moikiitos.users
+(name, email, password)
+VALUES('john', 'john@test.com', '789');
+
+
+INSERT INTO moikiitos.feeds
+(userid, content)
+VALUES(1, 'I am Tom.');
+
+INSERT INTO moikiitos.feeds
+(userid, content)
+VALUES(2, 'I am Lucy.');
+
+INSERT INTO moikiitos.feeds
+(userid, content)
+VALUES(3, 'I am John.');
+
+
+INSERT INTO moikiitos.followrelationship
+(userid, followid)
+VALUES(1, 2);
+
+
+INSERT INTO moikiitos.followrelationship
+(userid, followid)
+VALUES(1, 3);
+
+
+INSERT INTO moikiitos.followrelationship
+(userid, followid)
+VALUES(2, 3);
+
+
+INSERT INTO moikiitos.followrelationship
+(userid, followid)
+VALUES(3, 1);
