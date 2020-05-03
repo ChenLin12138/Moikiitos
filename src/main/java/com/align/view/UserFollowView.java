@@ -16,6 +16,7 @@ public class UserFollowView {
 	private Integer followersCount;
 	private List<User> following;
 	private List<User> followers;
+	
 	public String getUserName() {
 		return userName;
 	}

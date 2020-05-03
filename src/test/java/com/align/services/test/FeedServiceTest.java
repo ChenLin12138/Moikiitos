@@ -22,18 +22,6 @@ public class FeedServiceTest extends BaseServiceTest{
 	@Autowired
 	private FeedService service;
 	
-	
-	User superStar = new User();
-	User user0 = new User();
-	User user1 = new User();
-	User user2 = new User();
-	User user3 = new User();
-
-	@Before
-	public void setup() {
-		
-	}
-	
 	@Test
 	public void getFollowersListTest() {
 		User user = new User();

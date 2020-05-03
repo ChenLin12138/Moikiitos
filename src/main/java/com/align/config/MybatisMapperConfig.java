@@ -38,13 +38,6 @@ public class MybatisMapperConfig {
 	}
 	
 	@Bean
-	public UserMapper usersMapper() throws Exception {
-
-		return sqlSessionTemplate().getMapper(UserMapper.class);
-
-	}
-	
-	@Bean
 	public FeedMapper feedMapper() throws Exception {
 
 		return sqlSessionTemplate().getMapper(FeedMapper.class);
@@ -55,6 +48,13 @@ public class MybatisMapperConfig {
 	public FollowRelationshipMapper followRelationshipMapper() throws Exception {
 
 		return sqlSessionTemplate().getMapper(FollowRelationshipMapper.class);
+
+	}
+	
+	@Bean
+	public UserMapper usersMapper() throws Exception {
+
+		return sqlSessionTemplate().getMapper(UserMapper.class);
 
 	}
 }

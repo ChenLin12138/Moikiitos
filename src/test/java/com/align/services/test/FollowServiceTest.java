@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.align.models.FollowRelationship;
 import com.align.models.User;
 import com.align.services.FollowService;
+import com.align.services.UserService;
 
 /**
  * @author Chen Lin
@@ -20,6 +21,9 @@ public class FollowServiceTest extends BaseServiceTest{
 
 	@Autowired
 	private FollowService service;
+	
+	@Autowired
+	private UserService userService;
 	
 	
 	User superStar = new User();
@@ -37,22 +41,22 @@ public class FollowServiceTest extends BaseServiceTest{
 		superStar.setPassword("124");
 		
 		user0.setId(900000000);
-		user0.setEmail("testFollowinguser@Test.com");
+		user0.setEmail("user0@Test.com");
 		user0.setName("following");
 		user0.setPassword("134");
 		
 		user1.setId(900000001);
-		user1.setEmail("testFollowinguser@Test.com");
+		user1.setEmail("user1@Test.com");
 		user1.setName("following");
 		user1.setPassword("134");
 		
 		user2.setId(900000002);
-		user2.setEmail("testFollowinguser@Test.com");
+		user2.setEmail("user2@Test.com");
 		user2.setName("following");
 		user2.setPassword("134");
 		
 		user3.setId(900000003);
-		user3.setEmail("testFollowinguser@Test.com");
+		user3.setEmail("user3@Test.com");
 		user3.setName("following");
 		user3.setPassword("134");
 		
@@ -60,6 +64,12 @@ public class FollowServiceTest extends BaseServiceTest{
 		service.follow(user1, superStar);
 		service.follow(user2, superStar);
 		service.follow(user0, user3);
+		
+		userService.addUser(user0);
+		userService.addUser(user1);
+		userService.addUser(user2);
+		userService.addUser(user3);
+		userService.addUser(superStar);
 		
 	}
 	

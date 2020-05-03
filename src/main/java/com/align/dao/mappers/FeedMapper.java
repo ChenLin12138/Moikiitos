@@ -6,10 +6,12 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.context.annotation.Primary;
 
 import com.align.models.Feed;
 import com.align.models.User;
 
+@Primary
 @Mapper
 public interface FeedMapper {
 
@@ -31,12 +33,14 @@ public interface FeedMapper {
 	@Select({
 		"<script>",
 		"select",
-		"id, userid, content",
+		"feeds.id, userid, content, users.name",
 		"from feeds",
+		"inner join users on feeds.userid = users.id",
 		"where userid in",
 		"<foreach collection = 'ids' item = 'id' open = '(' separator=',' close=')'>",
 		"#{id}",
 		"</foreach>",
+		"order by id desc",
 		"</script>"
 	})
 	public List<Feed> selectFeedByUsers(@Param("ids") List<Integer> ids);

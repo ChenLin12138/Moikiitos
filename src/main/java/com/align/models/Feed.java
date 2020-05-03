@@ -5,10 +5,20 @@ public class Feed {
     private Integer id;
 
     private Integer userid;
+    
+    private String name;
 
     private String content;
 
-    public Integer getId() {
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getId() {
         return id;
     }
 
