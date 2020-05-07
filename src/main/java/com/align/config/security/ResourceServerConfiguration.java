@@ -18,7 +18,12 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 	@Override
 	public void configure (HttpSecurity http) throws Exception {
-		http.authorizeRequests().anyRequest().permitAll();
+		http.authorizeRequests()
+		.antMatchers(HttpMethod.GET, "/v1/moikiitos/**")
+		.authenticated();
+		
+		//http://localhost:8513/swagger-ui.html 
+//		http://localhost:8513/oauth/token
 //		//有用删除权限的角色申明
 //		.antMatchers(HttpMethod.DELETE,"/v1/organizations/**")
 //		.hasRole("ADMIN")
