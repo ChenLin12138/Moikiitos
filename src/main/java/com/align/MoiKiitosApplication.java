@@ -10,7 +10,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableResourceServer
 @EnableAuthorizationServer
-@EnableSwagger2
 public class MoiKiitosApplication {
 
 	public static void main(String[] args) {
