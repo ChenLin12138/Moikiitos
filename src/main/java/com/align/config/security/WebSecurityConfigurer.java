@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -20,6 +21,8 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 
 //扩展核心的Spring Security的WebSecurityConfigurerAdapter
 @Configuration
+//显示添加注解@EnableWebSecurity，不然junit会找不到一些关于spring security的依赖。
+@EnableWebSecurity
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	
 	@Override

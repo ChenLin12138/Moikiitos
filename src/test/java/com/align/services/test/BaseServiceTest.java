@@ -22,7 +22,9 @@ import com.align.config.MybatisMapperConfig;
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ContextConfiguration(classes = { DataSourceConfig.class, MybatisMapperConfig.class })
-@ComponentScan
+@ComponentScan({"com.align.*"})
+//@EnableWebSecurity
+//@ComponentScan
 public class BaseServiceTest {
 
 	@Rule

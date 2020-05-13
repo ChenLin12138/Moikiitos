@@ -3,12 +3,10 @@ package com.align.services.test;
 import java.util.List;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.align.models.Feed;
-import com.align.models.FollowRelationship;
 import com.align.models.User;
 import com.align.services.FeedService;
 

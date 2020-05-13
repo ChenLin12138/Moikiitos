@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.align.dao.mappers.UserMapper;
-import com.align.models.FollowRelationship;
 import com.align.models.User;
 
 /**
