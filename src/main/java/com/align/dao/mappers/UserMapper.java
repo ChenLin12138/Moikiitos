@@ -13,21 +13,21 @@ import com.align.models.User;
 @Mapper
 public interface UserMapper {
 	
-	@Insert("insert into users(id, name, email, password)" 
-			+" values(#{id},#{name},#{email},#{password})")
+	@Insert("insert into users(id, username, email, password)" 
+			+" values(#{id},#{username},#{email},#{password})")
     int insert(User record);
 
-	@Select("select id, name, email, password"
+	@Select("select id, username, email, password"
 	+" from users"
 	+" where email = #{email}")
 	public User selectUserByemail(String email);
 	
-	@Select("select id, name, email, password"
+	@Select("select id, username, email, password"
 	+" from users"
-	+" where email like #{name}")
+	+" where email like #{username}")
 	public List<User> selectUserByName(String name);
 	
-	@Select("select id, name, email, password"
+	@Select("select id, username, email, password"
 	+" from users"
 	+" where id = #{id}")
 	public User selectUserById(Integer id);

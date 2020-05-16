@@ -37,27 +37,27 @@ public class FollowServiceTest extends BaseServiceTest{
 		
 		superStar.setId(999999999);
 		superStar.setEmail("superStar@Test.com");
-		superStar.setName("superStar");
+		superStar.setUsername("superStar");
 		superStar.setPassword("124");
 		
 		user0.setId(900000000);
 		user0.setEmail("user0@Test.com");
-		user0.setName("following");
+		user0.setUsername("following");
 		user0.setPassword("134");
 		
 		user1.setId(900000001);
 		user1.setEmail("user1@Test.com");
-		user1.setName("following");
+		user1.setUsername("following");
 		user1.setPassword("134");
 		
 		user2.setId(900000002);
 		user2.setEmail("user2@Test.com");
-		user2.setName("following");
+		user2.setUsername("following");
 		user2.setPassword("134");
 		
 		user3.setId(900000003);
 		user3.setEmail("user3@Test.com");
-		user3.setName("following");
+		user3.setUsername("following");
 		user3.setPassword("134");
 		
 		service.follow(user0, superStar);

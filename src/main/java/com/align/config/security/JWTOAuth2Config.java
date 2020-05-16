@@ -5,7 +5,6 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -15,6 +14,8 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+
+import com.align.services.UserService;
 
 /**
  * @author Chen Lin
@@ -44,7 +45,8 @@ public class JWTOAuth2Config extends AuthorizationServerConfigurerAdapter{
     
 
     @Autowired
-    private UserDetailsService userDetailsService;
+//    private UserDetailsService userDetailsService;
+    private UserService userService;
     
     
 	@Override
@@ -57,7 +59,8 @@ public class JWTOAuth2Config extends AuthorizationServerConfigurerAdapter{
 		.accessTokenConverter(jwtAccessTokenConverter)
 		.tokenEnhancer(tokenEnhancerChain)
 		.authenticationManager(authenticationManager)
-		.userDetailsService(userDetailsService);
+//		.userDetailsService(userDetailsService);
+		.userDetailsService(userService);
 	}
 
 

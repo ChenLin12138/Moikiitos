@@ -1,6 +1,9 @@
 package com.align.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.align.dao.mappers.UserMapper;
@@ -12,7 +15,7 @@ import com.align.models.User;
  */
 
 @Service
-public class UserService implements IUserService{
+public class UserService implements IUserService, UserDetailsService{
 
 	@Autowired
 	private UserMapper mapper;
@@ -27,5 +30,11 @@ public class UserService implements IUserService{
 	
 	public void addUser(User user) {
 		mapper.insert(user);
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		
+		return null;
 	}
 }

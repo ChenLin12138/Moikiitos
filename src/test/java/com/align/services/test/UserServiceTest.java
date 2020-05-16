@@ -24,7 +24,7 @@ public class UserServiceTest extends BaseServiceTest {
 	public void setup() {
 		user0.setId(900000000);
 		user0.setEmail("user0@Test.com");
-		user0.setName("user0");
+		user0.setUsername("user0");
 		user0.setPassword("134");
 		
 		mapper.insert(user0);
@@ -33,13 +33,13 @@ public class UserServiceTest extends BaseServiceTest {
 	
 	@Test
 	public void getUserByIdTest() {
-		Assert.assertTrue("user0".equals(mapper.selectUserById(900000000).getName()));
+		Assert.assertTrue("user0".equals(mapper.selectUserById(900000000).getUsername()));
 	}
 	
 	
 	@Test
 	public void getUserByEmailTest() {
-		Assert.assertTrue("user0".equals(mapper.selectUserByemail("user0@Test.com").getName()));
+		Assert.assertTrue("user0".equals(mapper.selectUserByemail("user0@Test.com").getUsername()));
 	}
 	
 	

@@ -44,7 +44,7 @@ public class FollowController {
 		for(FollowRelationship e : followerList) {
 			User follower = new User();
 			follower.setId(e.getUserid());
-			follower.setName(e.getName());
+			follower.setUsername(e.getName());
 			follower.setEmail(e.getEmail());
 			followers.add(follower);
 		}
@@ -56,7 +56,7 @@ public class FollowController {
 		for(FollowRelationship e : followingList) {
 			User following = new User();
 			following.setId(e.getFollowid());
-			following.setName(e.getName());
+			following.setUsername(e.getName());
 			following.setEmail(e.getEmail());
 			followings.add(following);
 		}
@@ -66,7 +66,7 @@ public class FollowController {
 		result.setFollowersCount(followService.countFollower(user));
 		result.setFollowingCount(followService.countFollowing(user));
 		
-		String username = userService.getUserById(userid).getName();
+		String username = userService.getUserById(userid).getUsername();
 		result.setUserName(username);
 		return result;
 	}
