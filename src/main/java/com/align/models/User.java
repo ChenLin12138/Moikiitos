@@ -75,7 +75,11 @@ public class User implements UserDetails {
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
+//		 List<SimpleGrantedAuthority> authorities = new ArrayList<>(roles.size());
+//	        for (Role role : roles) {
+//	            authorities.add(new SimpleGrantedAuthority(role.getName()));
+//	        }
+//	        return authorities;
 		return null;
 	}
 

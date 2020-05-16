@@ -13,8 +13,8 @@ import com.align.models.User;
 @Mapper
 public interface UserMapper {
 	
-	@Insert("insert into users(id, username, email, password)" 
-			+" values(#{id},#{username},#{email},#{password})")
+	@Insert("insert into users(id, username, email, password,accountNonLocked,accountNonExpired,enabled)" 
+			+" values(#{id},#{username},#{email},#{password},1,1,1)")
     int insert(User record);
 
 	@Select("select id, username, email, password"
