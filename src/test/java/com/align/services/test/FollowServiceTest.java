@@ -39,26 +39,41 @@ public class FollowServiceTest extends BaseServiceTest{
 		superStar.setEmail("superStar@Test.com");
 		superStar.setUsername("superStar");
 		superStar.setPassword("124");
+		superStar.setAccountNonLocked(true);
+		superStar.setAccountNonExpired(true);
+		superStar.setEnabled(true);
 		
 		user0.setId(900000000);
 		user0.setEmail("user0@Test.com");
 		user0.setUsername("following");
 		user0.setPassword("134");
+		user0.setAccountNonLocked(true);
+		user0.setAccountNonExpired(true);
+		user0.setEnabled(true);
 		
 		user1.setId(900000001);
 		user1.setEmail("user1@Test.com");
 		user1.setUsername("following");
 		user1.setPassword("134");
+		user1.setAccountNonLocked(true);
+		user1.setAccountNonExpired(true);
+		user1.setEnabled(true);
 		
 		user2.setId(900000002);
 		user2.setEmail("user2@Test.com");
 		user2.setUsername("following");
 		user2.setPassword("134");
+		user2.setAccountNonLocked(true);
+		user2.setAccountNonExpired(true);
+		user2.setEnabled(true);
 		
 		user3.setId(900000003);
 		user3.setEmail("user3@Test.com");
 		user3.setUsername("following");
 		user3.setPassword("134");
+		user3.setAccountNonLocked(true);
+		user3.setAccountNonExpired(true);
+		user3.setEnabled(true);
 		
 		service.follow(user0, superStar);
 		service.follow(user1, superStar);

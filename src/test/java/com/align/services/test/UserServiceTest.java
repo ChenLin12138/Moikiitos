@@ -26,6 +26,9 @@ public class UserServiceTest extends BaseServiceTest {
 		user0.setEmail("user0@Test.com");
 		user0.setUsername("user0");
 		user0.setPassword("134");
+		user0.setAccountNonLocked(true);
+		user0.setAccountNonExpired(true);
+		user0.setEnabled(true);
 		
 		mapper.insert(user0);
 	

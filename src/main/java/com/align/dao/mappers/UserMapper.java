@@ -14,7 +14,7 @@ import com.align.models.User;
 public interface UserMapper {
 	
 	@Insert("insert into users(id, username, email, password,accountNonLocked,accountNonExpired,enabled)" 
-			+" values(#{id},#{username},#{email},#{password},1,1,1)")
+			+" values(#{id},#{username},#{email},#{password},#{accountNonLocked},#{accountNonExpired},#{enabled})")
     int insert(User record);
 
 	@Select("select id, username, email, password"
