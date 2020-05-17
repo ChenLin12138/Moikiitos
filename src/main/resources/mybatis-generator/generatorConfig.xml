@@ -13,7 +13,8 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/moikiitos" userId="root"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/moikiitos?nullCatalogMeansCurrent=true" 
+                        userId="root"
                         password="3306"/>
 
 <!-- 请注意适当修改targetProject地址每次仅仅enable你想要修改的那个类，避免刷新了所有类-->
@@ -50,6 +51,12 @@
             enableDeleteByExample="false" enableSelectByExample="false"
             selectByExampleQueryId="false">   
        </table>  -->       
+      
+   	   <table tableName="role" domainObjectName="Role"
+       		enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false"
+            selectByExampleQueryId="false">   
+       </table>  
        
     </context>
 </generatorConfiguration>
