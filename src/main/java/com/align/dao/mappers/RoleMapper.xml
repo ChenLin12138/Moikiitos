@@ -19,7 +19,7 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.align.models.Role" >
-    insert into role (id, desc)
+    insert into role (`id` ,`desc`)
     values (#{id,jdbcType=INTEGER}, #{desc,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.align.models.Role" >

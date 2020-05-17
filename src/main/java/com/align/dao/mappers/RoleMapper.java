@@ -1,7 +1,12 @@
 package com.align.dao.mappers;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.context.annotation.Primary;
+
 import com.align.models.Role;
 
+@Primary
+@Mapper
 public interface RoleMapper {
     int deleteByPrimaryKey(Integer id);
 
