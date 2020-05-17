@@ -1,8 +1,8 @@
 package com.align.services.test;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 
 import com.align.dao.mappers.RoleMapper;
 import com.align.models.Role;
@@ -18,10 +18,20 @@ public class RoleServiceTest extends BaseServiceTest {
 	private RoleMapper roleMapper;
 	
 	@Test
-	@Rollback(false)
+//	@Rollback(false)
 	public void insert () {
 		Role role = new Role();
-		role.setDesc("test");
+		role.setRole("test");
 		roleMapper.insert(role);
+		Assert.assertTrue(1==roleMapper.insert(role));
 	}
+	
+	@Test
+	public void selectByPrimaryKey() {
+		Role role = roleMapper.selectByPrimaryKey(1);
+		Assert.assertTrue("admin".equals(role.getRole()));
+		
+	}
+	
+	
 }

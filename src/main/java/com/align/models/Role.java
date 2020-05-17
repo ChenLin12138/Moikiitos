@@ -3,7 +3,7 @@ package com.align.models;
 public class Role {
     private Integer id;
 
-    private String desc;
+    private String role;
 
     public Integer getId() {
         return id;
@@ -13,11 +13,11 @@ public class Role {
         this.id = id;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getRole() {
+        return role;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setRole(String role) {
+        this.role = role == null ? null : role.trim();
     }
 }
