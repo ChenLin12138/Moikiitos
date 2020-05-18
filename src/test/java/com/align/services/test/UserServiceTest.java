@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.align.dao.mappers.UserMapper;
 import com.align.models.User;
+import com.align.services.UserService;
 
 /**
  * @author Chen Lin
@@ -14,9 +15,9 @@ import com.align.models.User;
  */
 
 public class UserServiceTest extends BaseServiceTest {
-
+	
 	@Autowired
-	private UserMapper mapper;
+	private UserService service;
 	
 	User user0 = new User();
 	
@@ -29,14 +30,14 @@ public class UserServiceTest extends BaseServiceTest {
 		user0.setAccountNonLocked(true);
 		user0.setAccountNonExpired(true);
 		user0.setEnabled(true);
-		
-		mapper.insert(user0);
+		service.addUser(user0);
 	
 	}
 	
 	@Test
 	public void getUserByIdTest() {
-		User user = mapper.selectByPrimaryKey(900000000);
+		
+		User user = service.getUserById(900000000);
 		Assert.assertTrue("user0".equals(user.getUsername()));
 		Assert.assertTrue(user.isEnabled());
 	}
@@ -44,6 +45,6 @@ public class UserServiceTest extends BaseServiceTest {
 	
 	@Test
 	public void getUserByEmailTest() {
-		Assert.assertTrue("user0".equals(mapper.selectByEmail("user0@Test.com").getUsername()));
+		Assert.assertTrue("user0".equals(service.getUserByEmail("user0@Test.com").getUsername()));
 	}	
 }

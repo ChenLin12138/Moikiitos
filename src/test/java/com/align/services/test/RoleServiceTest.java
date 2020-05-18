@@ -17,6 +17,9 @@ public class RoleServiceTest extends BaseServiceTest {
 	@Autowired
 	private RoleMapper roleMapper;
 	
+//	@Autowired
+//	private RoleService service;
+	
 	@Test
 //	@Rollback(false)
 	public void insert () {
@@ -29,7 +32,7 @@ public class RoleServiceTest extends BaseServiceTest {
 	@Test
 	public void selectByPrimaryKey() {
 		Role role = roleMapper.selectByPrimaryKey(1);
-		Assert.assertTrue("admin".equals(role.getRole()));
+		Assert.assertTrue("ROLE_admin".equals(role.getRole()));
 		
 	}
 	
