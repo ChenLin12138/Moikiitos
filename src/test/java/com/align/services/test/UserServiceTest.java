@@ -36,7 +36,7 @@ public class UserServiceTest extends BaseServiceTest {
 	
 	@Test
 	public void getUserByIdTest() {
-		User user = mapper.selectUserById(900000000);
+		User user = mapper.selectByPrimaryKey(900000000);
 		Assert.assertTrue("user0".equals(user.getUsername()));
 		Assert.assertTrue(user.isEnabled());
 	}
@@ -44,6 +44,6 @@ public class UserServiceTest extends BaseServiceTest {
 	
 	@Test
 	public void getUserByEmailTest() {
-		Assert.assertTrue("user0".equals(mapper.selectByemail("user0@Test.com").getUsername()));
+		Assert.assertTrue("user0".equals(mapper.selectByEmail("user0@Test.com").getUsername()));
 	}	
 }

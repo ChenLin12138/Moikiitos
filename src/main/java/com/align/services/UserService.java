@@ -21,11 +21,11 @@ public class UserService implements IUserService, UserDetailsService{
 	private UserMapper mapper;
 	
 	public User getUserById(Integer id) {
-		return mapper.selectUserById(id);
+		return mapper.selectByPrimaryKey(id);
 	}
 	
 	public User getUserByEmail(String email) {
-		return mapper.selectByemail(email);
+		return mapper.selectByEmail(email);
 	}
 	
 	public void addUser(User user) {

@@ -20,12 +20,11 @@ public class User implements UserDetails {
     
     private String password;
     
-    private boolean accountNonLocked;
+    private Boolean accountnonlocked;
     
-    private boolean accountNonExpired;
+    private Boolean accountnonexpired;
     
-    private boolean enabled;
-    
+    private Boolean enabled;
     
 
 	public Integer getId() {
@@ -62,11 +61,11 @@ public class User implements UserDetails {
 	}
 	
    public void setAccountNonLocked(boolean accountNonLocked) {
-		this.accountNonLocked = accountNonLocked;
+		this.accountnonlocked = accountNonLocked;
 	}
 
 	public void setAccountNonExpired(boolean accountNonExpired) {
-		this.accountNonExpired = accountNonExpired;
+		this.accountnonexpired = accountNonExpired;
 	}
 
 	public void setEnabled(boolean enabled) {
@@ -86,13 +85,13 @@ public class User implements UserDetails {
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
-		return accountNonExpired;
+		return accountnonexpired;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
-		return accountNonLocked;
+		return accountnonlocked;
 	}
 
 	@Override
