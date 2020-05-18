@@ -45,7 +45,7 @@ public class FollowServiceTest extends BaseServiceTest{
 		
 		user0.setId(900000000);
 		user0.setEmail("user0@Test.com");
-		user0.setUsername("following");
+		user0.setUsername("user0");
 		user0.setPassword("134");
 		user0.setAccountNonLocked(true);
 		user0.setAccountNonExpired(true);
@@ -53,7 +53,7 @@ public class FollowServiceTest extends BaseServiceTest{
 		
 		user1.setId(900000001);
 		user1.setEmail("user1@Test.com");
-		user1.setUsername("following");
+		user1.setUsername("user1");
 		user1.setPassword("134");
 		user1.setAccountNonLocked(true);
 		user1.setAccountNonExpired(true);
@@ -61,7 +61,7 @@ public class FollowServiceTest extends BaseServiceTest{
 		
 		user2.setId(900000002);
 		user2.setEmail("user2@Test.com");
-		user2.setUsername("following");
+		user2.setUsername("user2");
 		user2.setPassword("134");
 		user2.setAccountNonLocked(true);
 		user2.setAccountNonExpired(true);
@@ -69,7 +69,7 @@ public class FollowServiceTest extends BaseServiceTest{
 		
 		user3.setId(900000003);
 		user3.setEmail("user3@Test.com");
-		user3.setUsername("following");
+		user3.setUsername("user3");
 		user3.setPassword("134");
 		user3.setAccountNonLocked(true);
 		user3.setAccountNonExpired(true);

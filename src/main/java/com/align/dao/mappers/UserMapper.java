@@ -17,17 +17,17 @@ public interface UserMapper {
 			+" values(#{id},#{username},#{email},#{password},#{accountNonLocked},#{accountNonExpired},#{enabled})")
     int insert(User record);
 
-	@Select("select id, username, email, password"
+	@Select("select id, username, email, password, accountNonLocked, accountNonExpired, enabled"
 	+" from users"
 	+" where email = #{email}")
-	public User selectUserByemail(String email);
+	public User selectByemail(String email);
 	
-	@Select("select id, username, email, password"
+	@Select("select id, username, email, password, accountNonLocked, accountNonExpired, enabled"
 	+" from users"
 	+" where email like #{username}")
-	public List<User> selectUserByName(String name);
+	public List<User> selectByName(String name);
 	
-	@Select("select id, username, email, password"
+	@Select("select id, username, email, password, accountNonLocked, accountNonExpired, enabled"
 	+" from users"
 	+" where id = #{id}")
 	public User selectUserById(Integer id);

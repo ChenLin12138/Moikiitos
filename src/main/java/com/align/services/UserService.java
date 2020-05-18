@@ -25,7 +25,7 @@ public class UserService implements IUserService, UserDetailsService{
 	}
 	
 	public User getUserByEmail(String email) {
-		return mapper.selectUserByemail(email);
+		return mapper.selectByemail(email);
 	}
 	
 	public void addUser(User user) {
