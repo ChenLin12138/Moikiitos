@@ -36,15 +36,14 @@ public class UserServiceTest extends BaseServiceTest {
 	
 	@Test
 	public void getUserByIdTest() {
-		Assert.assertTrue("user0".equals(mapper.selectUserById(900000000).getUsername()));
+		User user = mapper.selectUserById(900000000);
+		Assert.assertTrue("user0".equals(user.getUsername()));
+		Assert.assertTrue(user.isEnabled());
 	}
 	
 	
 	@Test
 	public void getUserByEmailTest() {
 		Assert.assertTrue("user0".equals(mapper.selectByemail("user0@Test.com").getUsername()));
-	}
-	
-	
-	
+	}	
 }
