@@ -13,5 +13,7 @@ public interface IUserService {
 	
 	public User getUserByEmail(String email);
 	
+	public User getUserByUsername(String username);
+	
 	public void addUser(User user);
 }

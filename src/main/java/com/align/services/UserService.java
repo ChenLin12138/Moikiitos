@@ -28,12 +28,23 @@ public class UserService implements IUserService, UserDetailsService{
 		return mapper.selectByEmail(email);
 	}
 	
+	public User getUserByUsername(String username) {
+		return mapper.selectByUsername(username);
+	}
+	
 	public void addUser(User user) {
 		mapper.insert(user);
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		
+//	   User user = hrMapper.loadUserByUsername(username);
+//        if (hr == null) {
+//            throw new UsernameNotFoundException("用户名不存在!");
+//        }
+//        hr.setRoles(hrMapper.getHrRolesById(hr.getId()));
+//        return hr;
 		
 		return null;
 	}

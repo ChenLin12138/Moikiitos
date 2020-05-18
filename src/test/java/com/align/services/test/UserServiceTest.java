@@ -47,4 +47,9 @@ public class UserServiceTest extends BaseServiceTest {
 	public void getUserByEmailTest() {
 		Assert.assertTrue("user0".equals(service.getUserByEmail("user0@Test.com").getUsername()));
 	}	
+	
+	@Test
+	public void getUserByUsernameTest() {
+		Assert.assertTrue("user0@Test.com".equals(service.getUserByUsername("user0").getEmail()));
+	}
 }

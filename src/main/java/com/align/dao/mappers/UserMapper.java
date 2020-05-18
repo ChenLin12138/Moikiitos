@@ -1,7 +1,12 @@
 package com.align.dao.mappers;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.context.annotation.Primary;
+
 import com.align.models.User;
 
+@Primary
+@Mapper
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -12,6 +17,8 @@ public interface UserMapper {
     User selectByPrimaryKey(Integer id);
     
     User selectByEmail(String email);
+    
+    User selectByUsername(String name);
 
     int updateByPrimaryKeySelective(User record);
 
