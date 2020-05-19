@@ -1,6 +1,7 @@
 package com.align.models;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,6 +27,16 @@ public class User implements UserDetails {
     
     private Boolean enabled;
     
+    private List<Role> roles;
+    
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
 
 	public Integer getId() {
 		return id;

@@ -1,5 +1,7 @@
 package com.align.dao.mappers;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.context.annotation.Primary;
 
@@ -19,4 +21,6 @@ public interface RoleMapper {
     int updateByPrimaryKeySelective(Role record);
 
     int updateByPrimaryKey(Role record);
+    
+    List<Role> selectRolesByPrimaryKey(Integer id);
 }

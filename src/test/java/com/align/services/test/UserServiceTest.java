@@ -1,11 +1,17 @@
 package com.align.services.test;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.align.dao.mappers.UserMapper;
+import com.align.models.Role;
 import com.align.models.User;
 import com.align.services.UserService;
 
@@ -31,12 +37,20 @@ public class UserServiceTest extends BaseServiceTest {
 		user0.setAccountNonExpired(true);
 		user0.setEnabled(true);
 		service.addUser(user0);
+		
+		
+		Role role0 = new Role();
+		role0.setId(1);
+		Role role1 = new Role();
+		role1.setId(2);
+		
+		service.addRole(user0, role0);
+		service.addRole(user0, role1);
 	
 	}
 	
 	@Test
 	public void getUserByIdTest() {
-		
 		User user = service.getUserById(900000000);
 		Assert.assertTrue("user0".equals(user.getUsername()));
 		Assert.assertTrue(user.isEnabled());
@@ -51,5 +65,20 @@ public class UserServiceTest extends BaseServiceTest {
 	@Test
 	public void getUserByUsernameTest() {
 		Assert.assertTrue("user0@Test.com".equals(service.getUserByUsername("user0").getEmail()));
+	}
+	
+	@Test
+	public void getUserRoles() {
+		
+		List<String> expectedRoles = new ArrayList<String>();
+		expectedRoles.add("ROLE_admin");
+		expectedRoles.add("ROLE_user");
+	
+		
+		List<String> actualRoles = new ArrayList<String>();
+		for(Role role :service.getUserRoles(user0)) {
+			actualRoles.add(role.getRole());
+		}	
+		assertThat(actualRoles, is(expectedRoles));	
 	}
 }
