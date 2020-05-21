@@ -39,7 +39,8 @@ import com.align.services.UserService;
 public class JWTOAuth2Config extends AuthorizationServerConfigurerAdapter{
 	
 	//accessToken过期时间设置
-	private static final int accessTokenValiditySeconds = 300 * 1 * 1;
+	private static final int accessTokenValiditySeconds = 5 * 60 * 1;
+	private static final int refreshTokenValiditySeconds = 60 * 60 * 1;
 	
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -84,6 +85,7 @@ public class JWTOAuth2Config extends AuthorizationServerConfigurerAdapter{
               .scopes("webclient", "mobileclient")
               //配置token失效时间，这里有个奇怪的地方，如果失效时间配置在tokenservice中使用普通token有效
               //但是切换到jwt的时候无效。
-              .accessTokenValiditySeconds(accessTokenValiditySeconds);
+              .accessTokenValiditySeconds(accessTokenValiditySeconds)
+              .refreshTokenValiditySeconds(refreshTokenValiditySeconds);
   }
 }
