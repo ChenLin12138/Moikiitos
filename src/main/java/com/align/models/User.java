@@ -1,9 +1,11 @@
 package com.align.models;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class User implements UserDetails {
@@ -85,12 +87,11 @@ public class User implements UserDetails {
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-//		 List<SimpleGrantedAuthority> authorities = new ArrayList<>(roles.size());
-//	        for (Role role : roles) {
-//	            authorities.add(new SimpleGrantedAuthority(role.getName()));
-//	        }
-//	        return authorities;
-		return null;
+		 List<SimpleGrantedAuthority> authorities = new ArrayList<>(roles.size());
+	        for (Role role : roles) {
+	            authorities.add(new SimpleGrantedAuthority(role.getRole()));
+	        }
+	        return authorities;
 	}
 
 	@Override

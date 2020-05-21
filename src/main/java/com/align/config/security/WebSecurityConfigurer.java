@@ -1,5 +1,6 @@
 package com.align.config.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,7 +9,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import com.align.services.UserService;
 
 /**
  * @author Chen Lin
@@ -25,6 +28,9 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 @EnableWebSecurity
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	
+	@Autowired
+	UserService userService;
+	
 	@Override
 	@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
 	public AuthenticationManager authenticationManagerBean() throws Exception{
@@ -39,12 +45,13 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("chenlin")
-		.password(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("password1"))
-		.roles("USERS")
-		.and()
-		.withUser("zdm")
-		.password(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("password2"))
-		.roles("USERS","ADMIN");
+//		auth.inMemoryAuthentication().withUser("chenlin")
+//		.password(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("password1"))
+//		.roles("USERS")
+//		.and()
+//		.withUser("zdm")
+//		.password(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("password2"))
+//		.roles("USERS","ADMIN");
+		auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 }
