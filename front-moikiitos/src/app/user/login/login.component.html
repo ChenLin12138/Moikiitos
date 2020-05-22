@@ -1,1 +1,18 @@
-<p>safsdfs</p>
+
+<h1>Welcome Users</h1>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+
+  <div>
+    <label for="name"> Name </label>
+    <input id="name" type="text" formControlName ="name">
+  </div>
+
+  <div>
+    <label for="password"> Password </label>
+    <input id="password" type="text" formControlName ="password">
+  </div>
+
+  <button class="button" type="submit">Login</button>
+
+</form>
