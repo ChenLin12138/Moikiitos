@@ -1,11 +1,13 @@
 package com.align.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -31,6 +33,10 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	@Autowired
 	UserService userService;
 	
+	@Value("${security.enable-csrf}")
+	private boolean csrfEnabled;
+	
+	
 	@Override
 	@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
 	public AuthenticationManager authenticationManagerBean() throws Exception{
@@ -53,5 +59,16 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
 //		.password(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("password2"))
 //		.roles("USERS","ADMIN");
 		auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
+	}
+	
+//	//添加一下逻辑，想允许cors,但是没有作用
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		super.configure(http);
+		
+		if(!csrfEnabled) {
+			http.cors().and()
+			.csrf().disable();
+		}
 	}
 }
