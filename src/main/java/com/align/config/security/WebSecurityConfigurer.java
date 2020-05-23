@@ -61,14 +61,14 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
 		auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
-//	//添加一下逻辑，想允许cors,但是没有作用
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		super.configure(http);
-		
-		if(!csrfEnabled) {
-			http.cors().and()
-			.csrf().disable();
-		}
-	}
+	//添加一下逻辑，想允许cors,但是没有作用
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
+//		super.configure(http);
+//		
+//		if(!csrfEnabled) {
+//			http.cors().and()
+//			.csrf().disable();
+//		}
+//	}
 }
