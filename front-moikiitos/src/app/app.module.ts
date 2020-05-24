@@ -14,15 +14,24 @@ import { zh_CN } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { LoginComponent } from './user/login/login.component';
+import { JwtModule } from '@auth0/angular-jwt';
+// import { AuthGuard } from './auth.guard';
+import { BoardComponent } from './user/board/board.component';
 
 
 registerLocaleData(zh);
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 //添加路由模块
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    // AuthGuard,
+    BoardComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +43,16 @@ registerLocaleData(zh);
     HttpClientModule,
     BrowserAnimationsModule
     ,ReactiveFormsModule
+    ,JwtModule.forRoot({
+      config : {
+        // 从localStorage中获取token
+        tokenGetter : tokenGetter
+        //允许发送认证的请求域名
+        ,whitelistedDomains : ['moikiitos.com']
+        //登录接口
+        ,blacklistedRoutes : ['moikiitos.com/oauth/token']
+      }
+    })
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
