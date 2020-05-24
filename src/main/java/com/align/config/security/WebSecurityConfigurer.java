@@ -62,13 +62,13 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	}
 	
 	//添加一下逻辑，想允许cors,但是没有作用
-//	@Override
-//	protected void configure(HttpSecurity http) throws Exception {
-//		super.configure(http);
-//		
-//		if(!csrfEnabled) {
-//			http.cors().and()
-//			.csrf().disable();
-//		}
-//	}
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		super.configure(http);
+		
+		if(!csrfEnabled) {
+			http.cors().and()
+			.csrf().disable();
+		}
+	}
 }
