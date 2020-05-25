@@ -13,42 +13,19 @@ export class LoginService {
   constructor(private http : HttpClient) { }
 
   doLogin(username : string, password : string) : Observable<boolean> {
-    const params : HttpParams = new HttpParams();
-    const headers : HttpHeaders = new HttpHeaders();
-
-    // params.set('username', 'tom');
-    // params.set('password', '123');
-    // params.set('client_id', 'organization');
-    // params.set('client_secret', 'organization666');
-    // params.set('grant_type', 'password');
-    // params.set('scope', 'webclient');
-
-    headers.set('Content-Type', 'application/form-data');
-    // headers.set('Authorization','Basic');
-    // headers.set('Authorization','Basic');
-    // headers.set('Content-Type', 'application/json');
-
-    // headers.set('Authorization','Basic '+btoa("client_id:organization,client_secret:organization666"));
-    // headers.set('Authorization','Basic '+btoa("organization:organization666"));
-    headers.set('Authorization','Basic b3JnYW5pemF0aW9uOm9yZ2FuaXphdGlvbjY2Ng==');
-
-  
-
+    let headers : HttpHeaders = new HttpHeaders();
+    headers = headers.set('Authorization','Basic '+btoa("organization:organization666"));
     let formData: FormData = new FormData(); 
-    formData.append('username', 'tom'); 
-    formData.append('password', '123'); 
-    // formData.append('client_id', 'organization'); 
-    // formData.append('client_secret', 'organization666'); 
-    formData.append('grant_type', 'password'); 
-    formData.append('scope', 'webclient'); 
-
-    console.log(btoa("organization:organization666"));
-
+    formData.set('username', username); 
+    formData.set('password', password);  
+    formData.set('grant_type', 'password'); 
+    formData.set('scope', 'webclient'); 
 
     // return this.http.post<{token : string}>(this.loginUrl,{username : username, password : password})
-    return this.http.post<{token : string}>(this.loginUrl ,formData, {headers})
+    return this.http.post<{token : string}>(this.loginUrl ,formData, {headers : headers})
     .pipe(
       map(result => {
+        console.log(result);
         localStorage.setItem('access_token', result.token);
         return true;
       })
