@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
@@ -15,7 +14,7 @@ import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { LoginComponent } from './user/login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
-// import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './auth.guard';
 import { BoardComponent } from './user/board/board.component';
 
 
@@ -30,7 +29,6 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     LoginComponent,
-    // AuthGuard,
     BoardComponent,
   ],
   imports: [
@@ -52,9 +50,10 @@ export function tokenGetter() {
         //登录接口
         ,blacklistedRoutes : ['moikiitos.com/oauth/token']
       }
-    })
+    }
+    )
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  providers: [{ provide: NZ_I18N, useValue: zh_CN}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
