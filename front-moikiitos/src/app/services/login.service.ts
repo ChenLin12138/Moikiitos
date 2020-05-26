@@ -28,12 +28,16 @@ export class LoginService {
     .pipe(
       map(result => {
         console.log(result);
-        //获取token放入localStorage中
         localStorage.setItem('access_token', result.access_token);
         localStorage.setItem('refresh_token', result.refresh_token);
         return true;
       })
     );
+  }
+
+  doLogout(){
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
   }
 
   test(username : string, password : string){

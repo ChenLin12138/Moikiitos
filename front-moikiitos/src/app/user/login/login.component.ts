@@ -11,8 +11,10 @@ import { first } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm;
-  result;
+  public loginForm;
+  public result;
+  public error : string ;
+  
 
   constructor(private formBuilder : FormBuilder, private loginService : LoginService, private router : Router) { 
     this.loginForm = this.formBuilder.group({
@@ -28,9 +30,8 @@ export class LoginComponent implements OnInit {
     console.log('Your order has been submitted', data);
     this.loginService.doLogin(data.name, data.password)
     .subscribe(
-      res => {console.log(res)}
+      result => this.router.navigateByUrl('/user/board'),
+      err => this.error = 'Could not authenticate'
     );
-    this.loginForm.reset();
   }
-
 }
