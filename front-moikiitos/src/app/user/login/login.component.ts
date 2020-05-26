@@ -27,11 +27,9 @@ export class LoginComponent implements OnInit {
   onSubmit(data) {
     console.log('Your order has been submitted', data);
     this.loginService.doLogin(data.name, data.password)
-    // this.loginService.test(data.name, data.password)
     .subscribe(
       res => {console.log(res)}
-    )
-    ;
+    );
     this.loginForm.reset();
   }
 
