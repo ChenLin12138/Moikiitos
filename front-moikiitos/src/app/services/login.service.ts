@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../classes/user';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,6 @@ export class LoginService {
 
   constructor(private http : HttpClient
               , private jwtHelperService: JwtHelperService
-              , private router : Router
               ) { }
 
   doLogin(username : string, password : string) : Observable<boolean> {
@@ -50,7 +48,7 @@ export class LoginService {
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_roles');
-    this.router.navigateByUrl('user/login');
+    // this.router.navigateByUrl('user/login');
   }
 
   test(username : string, password : string){

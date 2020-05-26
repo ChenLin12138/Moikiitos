@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+import { FeedService } from 'src/app/services/feed.service';
+import { UserFeed } from '../../classes/userfeed'; 
 
 @Component({
   selector: 'app-dashboard',
@@ -9,17 +11,28 @@ import { Router } from '@angular/router';
 })
 export class DashBoardComponent implements OnInit {
 
-  constructor(private loginService : LoginService, private router : Router) { }
+  constructor(private loginService : LoginService
+              ,private router : Router
+              ,private feedService : FeedService 
+              ) { }
 
-  userName : string;
+  userFeed : UserFeed = new UserFeed();
 
   ngOnInit(): void {
-    this.userName = localStorage.getItem('user_name');
+    this.feedService.getFeeds().subscribe(
+      result => {
+        this.userFeed.userName = result.userName;
+        this.userFeed.followingCount = result.followingCount;
+        this.userFeed.followersCount = result.followersCount;
+      }
+    );
   }
 
   logout(){
     this.loginService.doLogout();
     this.router.navigateByUrl('user/login');
   }
+
+
 
 }
