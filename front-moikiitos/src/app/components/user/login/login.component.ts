@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from '../../services/login.service';
+import { LoginService } from '../../../services/login.service';
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +29,7 @@ export class LoginComponent implements OnInit {
     console.log('Your order has been submitted', data);
     this.loginService.doLogin(data.name, data.password)
     .subscribe(
-      result => this.router.navigateByUrl('/user/board'),
+      result => this.router.navigateByUrl('dashboard'),
       err => this.error = 'Could not authenticate'
     );
   }

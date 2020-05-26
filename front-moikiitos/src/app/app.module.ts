@@ -12,10 +12,9 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { zh_CN } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
-import { LoginComponent } from './user/login/login.component';
+import { LoginComponent } from './components/user/login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
-import { AuthGuard } from './auth.guard';
-import { BoardComponent } from './user/board/board.component';
+import { DashBoardComponent } from './components/dashboard/dashboard.component';
 
 
 registerLocaleData(zh);
@@ -29,7 +28,7 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     LoginComponent,
-    BoardComponent,
+    DashBoardComponent,
   ],
   imports: [
     BrowserModule,
