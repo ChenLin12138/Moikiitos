@@ -9,7 +9,10 @@ export class DashBoardComponent implements OnInit {
 
   constructor() { }
 
+  userName : string;
+
   ngOnInit(): void {
+    this.userName = localStorage.getItem('user_name');
   }
 
 }

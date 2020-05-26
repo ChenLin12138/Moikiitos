@@ -2,15 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from '../classes/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
+  currentUser : User = new User();  
   loginUrl = "http://moikiitos.com/oauth/token";
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient
+              , private jwtHelperService: JwtHelperService) { }
 
   doLogin(username : string, password : string) : Observable<boolean> {
     let headers : HttpHeaders = new HttpHeaders();
@@ -30,6 +34,9 @@ export class LoginService {
         console.log(result);
         localStorage.setItem('access_token', result.access_token);
         localStorage.setItem('refresh_token', result.refresh_token);
+        this.currentUser = this.decodeUserFromToken(result.access_token);
+        localStorage.setItem('user_name',this.currentUser.userName);
+        localStorage.setItem('user_roles',JSON.stringify(this.currentUser.roles));
         return true;
       })
     );
@@ -42,5 +49,11 @@ export class LoginService {
 
   test(username : string, password : string){
     return this.http.get("http://moikiitos.com/v1/moikiitos/feeds/1");
+  }
+
+  decodeUserFromToken(token) : User {
+    this.currentUser.userName = this.jwtHelperService.decodeToken(token).user_name;
+    this.currentUser.roles = this.jwtHelperService.decodeToken(token).authorities;
+    return this.currentUser;
   }
 }
