@@ -36,6 +36,7 @@ export class LoginService {
         localStorage.setItem('access_token', result.access_token);
         localStorage.setItem('refresh_token', result.refresh_token);
         this.currentUser = this.decodeUserFromToken(result.access_token);
+        localStorage.setItem('user_id',JSON.stringify(this.currentUser.userId));
         localStorage.setItem('user_name',this.currentUser.userName);
         localStorage.setItem('user_roles',JSON.stringify(this.currentUser.roles));
         return true;
@@ -56,6 +57,7 @@ export class LoginService {
   }
 
   decodeUserFromToken(token) : User {
+    this.currentUser.userId = this.jwtHelperService.decodeToken(token).user_id;
     this.currentUser.userName = this.jwtHelperService.decodeToken(token).user_name;
     this.currentUser.roles = this.jwtHelperService.decodeToken(token).authorities;
     return this.currentUser;

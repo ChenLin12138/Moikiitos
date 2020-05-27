@@ -17,6 +17,8 @@ export class DashBoardComponent implements OnInit {
               ) { }
 
   userFeed : UserFeed = new UserFeed();
+  testuserId : number;
+
 
   ngOnInit(): void {
     this.feedService.getFeeds().subscribe(
@@ -24,6 +26,7 @@ export class DashBoardComponent implements OnInit {
         this.userFeed.userName = result.userName;
         this.userFeed.followingCount = result.followingCount;
         this.userFeed.followersCount = result.followersCount;
+        this.testuserId = Number(localStorage.getItem('user_id'));
       }
     );
   }
