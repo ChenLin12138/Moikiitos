@@ -3,8 +3,7 @@ package com.align.config.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
+import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
@@ -25,6 +24,9 @@ public class JWTTokenStoreConfig {
 	@Autowired
 	private ServiceConfig serviceConfig;
 	
+	@Autowired
+    private CustomUserAuthenticationConverter customUserAuthenticationConverter;
+
 	@Bean
 	public TokenStore tokenStore(){
 		return new JwtTokenStore(jwtAccessTokenConverter());
@@ -42,10 +44,17 @@ public class JWTTokenStoreConfig {
 //		return defaultTokenServices;
 //	}
 	
+	//配置自己的jwt payload结构
 	@Bean
 	public JwtAccessTokenConverter jwtAccessTokenConverter() {
 		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
 		converter.setSigningKey(serviceConfig.getJwtSigningKey());
+		//取出默认的AccessTokenConverter
+		DefaultAccessTokenConverter customAccessTokenConverter = new DefaultAccessTokenConverter();
+		//将AuthenticationConverter注入AccessTokenConverter
+		customAccessTokenConverter.setUserTokenConverter(customUserAuthenticationConverter);
+		//将来AccessTokenConverter注入JwtAccessTokenConverter
+		converter.setAccessTokenConverter(customAccessTokenConverter);
 		return converter;
 	}
 }
