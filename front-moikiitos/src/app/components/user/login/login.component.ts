@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     console.log('Your order has been submitted', data);
     this.loginService.doLogin(data.name, data.password)
     .subscribe(
-      result => this.router.navigateByUrl('dashboard'),
+      result => this.router.navigateByUrl('main'),
       err => this.error = 'Could not authenticate'
     );
   }

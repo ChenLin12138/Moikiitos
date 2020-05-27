@@ -8,14 +8,14 @@ import { Observable } from 'rxjs';
 })
 export class FeedService {
 
-  feedUrl : string = "http://moikiitos.com/v1/moikiitos/feeds/1";
+  feedUrl : string = "http://moikiitos.com/v1/moikiitos/feeds/";
 
   constructor(
    private http: HttpClient
   ) { }
 
-  getFeeds() : Observable<UserFeed>{
+  getFeeds(userId : number) : Observable<UserFeed>{
     let headers : HttpHeaders = new HttpHeaders({'Authorization':localStorage.getItem('access_token')});
-    return this.http.get<UserFeed>(this.feedUrl,{headers : headers});
+    return this.http.get<UserFeed>(this.feedUrl+userId,{headers : headers});
   }
 }

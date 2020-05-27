@@ -5,16 +5,16 @@ import { FeedService } from 'src/app/services/feed.service';
 import { UserFeed } from '../../classes/userfeed'; 
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css']
 })
-export class DashBoardComponent implements OnInit {
+export class MainComponent implements OnInit {
 
   constructor(private loginService : LoginService
-              ,private router : Router
-              ,private feedService : FeedService 
-              ) { }
+    ,private router : Router
+    ,private feedService : FeedService 
+    ) { }
 
   userFeed : UserFeed = new UserFeed();
   testuserId : number;
@@ -35,7 +35,6 @@ export class DashBoardComponent implements OnInit {
     this.loginService.doLogout();
     this.router.navigateByUrl('user/login');
   }
-
 
 
 }

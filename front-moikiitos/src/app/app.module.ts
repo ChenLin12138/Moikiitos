@@ -15,6 +15,7 @@ import zh from '@angular/common/locales/zh';
 import { LoginComponent } from './components/user/login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DashBoardComponent } from './components/dashboard/dashboard.component';
+import { MainComponent } from './components/main/main.component';
 
 
 registerLocaleData(zh);
@@ -29,6 +30,7 @@ export function tokenGetter() {
     AppComponent,
     LoginComponent,
     DashBoardComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
