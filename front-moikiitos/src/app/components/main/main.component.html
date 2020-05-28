@@ -14,12 +14,12 @@
                 <div class="link">
                     <div class="linkItem"><a routerLink="dashboard">Following {{userFeed.followingCount}}</a></div>
                     <div class="linkItem"><a routerLink="second">Followers {{userFeed.followersCount}}</a></div>  
-                    <router-outlet></router-outlet>
                 </div>
             </div>
         </aside>
         <div class="el-content">
             Main Content
+            <router-outlet></router-outlet>
         </div>
     </section>
 </div>

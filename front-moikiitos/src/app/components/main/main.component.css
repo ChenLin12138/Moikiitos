@@ -3,8 +3,10 @@
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     border-style:solid;
     border-width: 2px;
 }
@@ -43,24 +45,25 @@
     /* border-style:solid;*/
     border-width: 2px; 
     border-bottom-style: solid;
-    padding-top: 10px; 
-    padding-bottom: 10px;
+    padding-top: 20px; 
+    padding-bottom: 20px;
+    font-size: 14px;
 }
 
 .el-container .el-aside .link {
     padding-top: 20px; 
     padding-bottom: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .el-container .el-aside .link .linkItem{
-    margin-top : 10px;
+    margin-top : 20px;
     /* margin-bottom : 10px;  */
     border-style:solid;
     border-width: 2px;
-    padding-top: 10px; 
-    padding-bottom: 10px;
+    padding-top: 20px; 
+    padding-bottom: 20px;
 }
 
 .el-container .el-content{

@@ -40,7 +40,7 @@ public class JWTOAuth2Config extends AuthorizationServerConfigurerAdapter{
 	
 	//accessToken过期时间设置
 	private static final int accessTokenValiditySeconds = 60 * 60 * 1;
-	private static final int refreshTokenValiditySeconds = 12 * 60 * 1;
+	private static final int refreshTokenValiditySeconds = 60 * 60 * 1;
 	
 	@Autowired
 	private AuthenticationManager authenticationManager;
