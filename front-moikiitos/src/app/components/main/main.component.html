@@ -1,15 +1,25 @@
 <div>
-    <div class="container">
+    <div el-header class="container">
         <div class="homeHeader">
                 <div class="title">Moi Kiitos</div>
                 <div class="homeButton"><button (click)="logout()">Logout</button></div>
         </div>
-        <nav>
-            <ul>
-                <li><a routerLink="dashboard">Dashboard</a></li>
-                <li><a routerLink="second">Second</a></li>       
-            </ul>
-        </nav>
-        <router-outlet></router-outlet>
     </div>
+    <section class="el-container">
+        <aside class="el-aside">
+            <div class="menuPanel">
+                <div class="name">
+                    {{userFeed.userName}}
+                </div>
+                <div class="link">
+                    <div class="linkItem"><a routerLink="dashboard">Following {{userFeed.followingCount}}</a></div>
+                    <div class="linkItem"><a routerLink="second">Followers {{userFeed.followersCount}}</a></div>  
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </aside>
+        <div class="el-content">
+            Main Content
+        </div>
+    </section>
 </div>
