@@ -16,6 +16,7 @@ import { LoginComponent } from './components/user/login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DashBoardComponent } from './components/dashboard/dashboard.component';
 import { MainComponent } from './components/main/main.component';
+import { SecondComponent } from './components/second/second.component';
 
 
 registerLocaleData(zh);
@@ -31,6 +32,7 @@ export function tokenGetter() {
     LoginComponent,
     DashBoardComponent,
     MainComponent,
+    SecondComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,15 @@
-<p>Main Page</p>
-<p>{{testuserId}}</p>
-<p>{{userFeed.userName}}</p>
-<p>{{userFeed.followingCount}}</p>
-<p>{{userFeed.followersCount}}</p>
 <div>
-    <button (click)="logout()">Logout</button>
+    <div class="container">
+        <div class="homeHeader">
+                <div class="title">Moi Kiitos</div>
+                <div class="homeButton"><button (click)="logout()">Logout</button></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a routerLink="dashboard">Dashboard</a></li>
+                <li><a routerLink="second">Second</a></li>       
+            </ul>
+        </nav>
+        <router-outlet></router-outlet>
+    </div>
 </div>

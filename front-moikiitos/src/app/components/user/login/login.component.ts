@@ -26,7 +26,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(data) {
-    console.log('Your order has been submitted', data);
+
+    if(localStorage.getItem('access_token')){
+      this.router.navigateByUrl('main');
+    }
+
     this.loginService.doLogin(data.name, data.password)
     .subscribe(
       result => this.router.navigateByUrl('main'),

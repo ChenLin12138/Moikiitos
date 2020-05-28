@@ -36,5 +36,4 @@ export class MainComponent implements OnInit {
     this.router.navigateByUrl('user/login');
   }
 
-
 }

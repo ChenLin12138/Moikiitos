@@ -49,7 +49,7 @@ export class LoginService {
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_roles');
-    // this.router.navigateByUrl('user/login');
+    localStorage.removeItem('user_id');
   }
 
   test(username : string, password : string){
