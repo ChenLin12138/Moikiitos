@@ -27,10 +27,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit(data) {
 
-    if(localStorage.getItem('access_token')){
+    if(localStorage.getItem('access_token') && localStorage.getItem('user_name')==data.name){
       this.router.navigateByUrl('main');
     }
 
+
+    this.loginService.doLogout();
     this.loginService.doLogin(data.name, data.password)
     .subscribe(
       result => this.router.navigateByUrl('main'),
