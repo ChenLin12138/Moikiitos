@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { config } from 'rxjs';
+import { UserFeed } from '../../classes/userfeed'; 
+import { FeedService } from 'src/app/services/feed.service';
 
 @Component({
   selector: 'app-chat',
@@ -11,13 +12,19 @@ export class ChatComponent implements OnInit {
 
   public chatForm;
 
-  constructor(private formBuilder : FormBuilder) { 
+  userFeed : UserFeed = new UserFeed();
+
+  constructor(private formBuilder : FormBuilder, private feedService : FeedService) { 
     this.chatForm = this.formBuilder.group({
       content : ''
     });
   }
 
   ngOnInit(): void {
+    this.feedService.getFeeds(Number(localStorage.getItem('user_id'))).subscribe(
+     result => this.userFeed = result
+    );
+  
   }
 
   onSubmit(data) {

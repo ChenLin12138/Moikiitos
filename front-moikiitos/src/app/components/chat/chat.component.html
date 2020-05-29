@@ -7,20 +7,14 @@
             <button class="button" type="submit">Post</button>
           </form>
     </div>
-    <div class="chatContent" style="display: flex; justify-content: space-around; border: 2px; border-style: solid; margin-top: 20px;">
+    <div *ngFor="let feed of userFeed.feeds" class="chatContent" style="display: flex; justify-content: space-around; border: 2px; border-style: solid; margin-top: 20px;">
         <div class="speaker" style="flex: 1; border-right-style: solid; border: 2px; padding : 20px 20px 20px 20px; margin-right: 5px;">
-            Jim
+            <!-- {{userFeed.feeds[0].name}} -->
+            {{feed.name}} 
         </div>
         <div calss="dailog" style="flex: 7; padding : 20px 20px 20px 20px;">
-            Hello, my name is Jim Green.
-        </div>
-    </div>
-    <div class="chatContent" style="display: flex; border: 2px; border-style: solid; margin-top: 20px;">
-        <div class="speaker" style="flex: 1; border-style: solid; border:2px">
-            Tom
-        </div>
-        <div calss="dailog" style="flex: 7;">
-            Hello, my name is Tom Green.
+            <!-- {{userFeed.feeds[0].content}} -->
+            {{feed.content}}
         </div>
     </div>
 </div>
