@@ -46,11 +46,8 @@
     align-items: center;
 
 }
-/* .el-container .el-aside .menuPanel{
-    padding-top: 40px; 
-} */
 
-.el-container .el-nav-bar .el-aside .menuPanel .name{
+.el-container .el-nav-bar .el-aside .name{
     border-width: 2px; 
     border-bottom-style: solid;
     padding-top: 20px; 
