@@ -1,17 +1,17 @@
 <div class="chatMain">
-    <div class="postField" style="border: 2px; border-style: solid; padding : 20px 20px 20px 20px; text-align: right;">
+    <div class="postField">
         <form [formGroup]="chatForm" (ngSubmit)="onSubmit(chatForm.value)">
             <div>
-              <input id="content" type="text" style="width: 100%; height: 80px; margin-bottom: 20px;" formControlName ="content" placeholder="Type something here...">
+              <input id="content" class="dailogPost" type="text" formControlName ="content" placeholder="  Type something here...">
             </div>
             <button class="button" type="submit">Post</button>
           </form>
     </div>
-    <div *ngFor="let feed of userFeed.feeds" class="chatContent" style="display: flex; justify-content: space-around; border-style: solid; border-width: 2px; margin-top: 20px;">
-        <div class="speaker" style="flex: 1; border: 2px; border-right-style: solid; padding : 20px 20px 20px 20px; margin-right: 5px;">
+    <div *ngFor="let feed of userFeed.feeds" class="chatContent">
+        <div class="speaker">
             {{feed.name}} 
         </div>
-        <div calss="dailog" style="flex: 7; padding : 20px 20px 20px 20px;">
+        <div class="dailog">
             {{feed.content}}
         </div>
     </div>
