@@ -58,7 +58,7 @@ public class FeedController {
 	}
 	
 	@ApiOperation(value = "提交Feed" ,  notes="用户提交留言")
-	@RequestMapping(value = "/{userid}", method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public void postFeed(@RequestBody Feed feed) {
 		feedService.postFeed(feed);
 	}

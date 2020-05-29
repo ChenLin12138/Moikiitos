@@ -52,10 +52,6 @@ export class LoginService {
     localStorage.removeItem('user_id');
   }
 
-  test(username : string, password : string){
-    return this.http.get("http://moikiitos.com/v1/moikiitos/feeds/1");
-  }
-
   decodeUserFromToken(token) : User {
     this.currentUser.userId = this.jwtHelperService.decodeToken(token).user_id;
     this.currentUser.userName = this.jwtHelperService.decodeToken(token).user_name;
