@@ -6,16 +6,18 @@
     </div>
    
     <div class="el-container">
-        <div class="el-aside">  
-            <div class="menuPanel">
-                <div class="name">
-                    {{userFeed.userName}}
+        <div class ="el-nav-bar">
+            <div class="el-aside">  
+                <div class="menuPanel ">
+                    <div class="name">
+                        {{userFeed.userName}}
+                    </div>
                 </div>
-            </div>
-        
-            <div class="link">
-                <div class="linkItem"><a routerLink="dashboard">Following {{userFeed.followingCount}}</a></div>
-                <div class="linkItem"><a routerLink="second">Followers {{userFeed.followersCount}}</a></div>  
+            
+                <div class="link">
+                    <div class="linkItem"><a routerLink="dashboard">Following {{userFeed.followingCount}}</a></div>
+                    <div class="linkItem"><a routerLink="second">Followers {{userFeed.followersCount}}</a></div>  
+                </div>
             </div>
         </div>
         <div class="el-content">

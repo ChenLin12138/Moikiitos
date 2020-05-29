@@ -23,11 +23,16 @@
 .el-container {
     display:flex; 
     justify-content: space-between; 
-    align-items: center;
+    align-items: top;
+
 }
 
-.el-container .el-aside{
-    flex: 1;
+.el-container .el-nav-bar{
+     padding-top: 40px;
+     flex: 1;
+}
+
+.el-container .el-nav-bar .el-aside{
     /* padding-left: 20px;
     padding-right: 20px; */
     text-align: center;
@@ -41,11 +46,11 @@
     align-items: center;
 
 }
-.el-container .el-aside .menuPanel{
-    /* padding-bottom: 20px;  */
-}
+/* .el-container .el-aside .menuPanel{
+    padding-top: 40px; 
+} */
 
-.el-container .el-aside .menuPanel .name{
+.el-container .el-nav-bar .el-aside .menuPanel .name{
     border-width: 2px; 
     border-bottom-style: solid;
     padding-top: 20px; 
@@ -53,14 +58,14 @@
     font-size: 14px;
 }
 
-.el-container .el-aside .link {
+.el-container .el-nav-bar .el-aside .link {
     padding-top: 20px; 
     padding-bottom: 20px;
     padding-left: 10px;
     padding-right: 10px;
 }
 
-.el-container .el-aside .link .linkItem{
+.el-container .el-nav-bar .el-aside .link .linkItem{
     margin-top : 20px;
     /* margin-bottom : 10px;  */
     border-style:solid;
@@ -72,7 +77,7 @@
 .el-container .el-content{
     flex: 4;
     padding-left: 20px;
-    padding-top: 25px;
+    padding-top: 40px;
     padding-bottom: 20px;
     text-align: center;
 }
