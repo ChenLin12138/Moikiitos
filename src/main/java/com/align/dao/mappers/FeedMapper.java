@@ -33,7 +33,7 @@ public interface FeedMapper {
 	@Select({
 		"<script>",
 		"select",
-		"feeds.id, userid, content, users.username",
+		"feeds.id, userid, content, users.username as name",
 		"from feeds",
 		"inner join users on feeds.userid = users.id",
 		"where userid in",
