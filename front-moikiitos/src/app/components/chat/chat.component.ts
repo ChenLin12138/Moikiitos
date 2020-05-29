@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class ChatComponent implements OnInit {
 
   public chatForm;
+  public dailogOwner : String = "";
 
   userFeed : UserFeed = new UserFeed();
   postFeed : Feed = new Feed();
@@ -29,7 +30,12 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.feedService.getFeeds(Number(localStorage.getItem('user_id'))).subscribe(
-     result => this.userFeed = result
+     result => {
+        this.userFeed = result;
+        // this.dailogOwner = result.userName;
+        this.dailogOwner = "tom";
+     }
+    
     );
   
   }

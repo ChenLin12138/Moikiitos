@@ -30,12 +30,4 @@ export class DashBoardComponent implements OnInit {
       }
     );
   }
-
-  logout(){
-    this.loginService.doLogout();
-    this.router.navigateByUrl('user/login');
-  }
-
-
-
 }

@@ -7,12 +7,23 @@
             <button class="button" type="submit">Post</button>
           </form>
     </div>
+
     <div *ngFor="let feed of userFeed.feeds" class="chatContent">
-        <div class="speaker">
-            {{feed.name}} 
+        <div class="dialogOwnerCondition" *ngIf="dailogOwner==feed.name" style="flex-direction: row-reverse;">
+            <div class="speaker-reverse">
+                {{feed.name}} 
+            </div>
+            <div class="dailog">
+                {{feed.content}}
+            </div>
         </div>
-        <div class="dailog">
-            {{feed.content}}
+        <div class="dialogOwnerCondition" *ngIf="dailogOwner!=feed.name">
+            <div class="speaker">
+                {{feed.name}} 
+            </div>
+            <div class="dailog">
+                {{feed.content}}
+            </div>
         </div>
     </div>
 </div>
