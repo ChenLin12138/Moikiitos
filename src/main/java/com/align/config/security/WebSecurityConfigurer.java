@@ -61,14 +61,16 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
 		auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
+	//打开这个配置，他就送我这个错误
+	//Consider defining a bean named 'mvcHandlerMappingIntrospector'
 	//添加一下逻辑，想允许cors,但是没有作用
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		super.configure(http);
-		
-		if(!csrfEnabled) {
-			http.cors().and()
-			.csrf().disable();
-		}
-	}
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
+//		super.configure(http);
+//		
+//		if(!csrfEnabled) {
+//			http.cors().and()
+//			.csrf().disable();
+//		}
+//	}
 }
