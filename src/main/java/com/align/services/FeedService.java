@@ -48,13 +48,13 @@ public class FeedService implements IFeedService{
 			ids.add(followRelationship.getFollowid());
 		}
 		
-		List<Feed> usersFeeds = mapper.selectFeedByUsers(ids);
+		List<Feed> usersFeeds = mapper.selectFeedByUsersId(ids);
 		
 		return usersFeeds;
 	}
 	
 	public Feed listFeedById(Feed feed) {
-		return mapper.selectFeedById(feed.getId());
+		return mapper.selectByPrimaryKey(feed.getId());
 	}
 	
 }

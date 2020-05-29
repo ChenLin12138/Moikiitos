@@ -34,11 +34,11 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>   
        
-     <!--   <table tableName="feeds" domainObjectName="Feed"
+      <table tableName="feeds" domainObjectName="Feed"
        		enableCountByExample="false" enableUpdateByExample="false"
             enableDeleteByExample="false" enableSelectByExample="false"
             selectByExampleQueryId="false">   
-       </table>   -->
+       </table>   
        
    <!--     <table tableName="followrelationship" domainObjectName="Relationship"
        		enableCountByExample="false" enableUpdateByExample="false"
@@ -58,11 +58,11 @@
             selectByExampleQueryId="false">   
        </table>  --> 
      
-      <table tableName="user_role" domainObjectName="UserRole"
+   <!--    <table tableName="user_role" domainObjectName="UserRole"
        		enableCountByExample="false" enableUpdateByExample="false"
             enableDeleteByExample="false" enableSelectByExample="false"
             selectByExampleQueryId="false">   
-       </table>         
+       </table>   -->       
        
     </context>
 </generatorConfiguration>

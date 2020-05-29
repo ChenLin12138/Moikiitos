@@ -15,33 +15,33 @@ import com.align.models.User;
 @Mapper
 public interface FeedMapper {
 
-	@Insert("insert into feeds(id, userid, content)" 
-			+" values(#{id},#{userid},#{content})")
+//	@Insert("insert into feeds(id, userid, content)" 
+//			+" values(#{id},#{userid},#{content})")
     int insert(Feed record);
 
-	@Select("select id, userid,content"
-	+" from feeds"
-	+" where userid = #{userid}")
-	public List<Feed> selectFeedByUser(User user);
+//	@Select("select id, userid,content"
+//	+" from feeds"
+//	+" where userid = #{userid}")
+	public List<Feed> selectFeedByUserId(User user);
 	
 
-	@Select("select id, userid, content"
-	+" from feeds"
-	+" where id = #{id}")
-	public Feed selectFeedById(Integer id);
+//	@Select("select id, userid, content"
+//	+" from feeds"
+//	+" where id = #{id}")
+	public Feed selectByPrimaryKey(Integer id);
 	
-	@Select({
-		"<script>",
-		"select",
-		"feeds.id, userid, content, users.username as name",
-		"from feeds",
-		"inner join users on feeds.userid = users.id",
-		"where userid in",
-		"<foreach collection = 'ids' item = 'id' open = '(' separator=',' close=')'>",
-		"#{id}",
-		"</foreach>",
-		"order by id desc",
-		"</script>"
-	})
-	public List<Feed> selectFeedByUsers(@Param("ids") List<Integer> ids);
+//	@Select({
+//		"<script>",
+//		"select",
+//		"feeds.id, userid, content, users.username as name",
+//		"from feeds",
+//		"inner join users on feeds.userid = users.id",
+//		"where userid in",
+//		"<foreach collection = 'ids' item = 'id' open = '(' separator=',' close=')'>",
+//		"#{id}",
+//		"</foreach>",
+//		"order by id desc",
+//		"</script>"
+//	})
+	public List<Feed> selectFeedByUsersId(@Param("ids") List<Integer> ids);
 }
