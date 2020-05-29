@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,7 +40,7 @@ public class FeedController {
 	@Autowired
 	IFollowService followService;
 	
-	@ApiOperation(value = "获取Feed信息" ,  notes="通过organizationId和licenseId获取指定的License信息，默认使用Feign方式")
+	@ApiOperation(value = "获取Feed信息" ,  notes="获取与该用户相关的留言信息")
 	@RequestMapping(value = "/{userid}", method = RequestMethod.GET)
 	public FeedView getFeed(@PathVariable("userid") Integer userid) {
 		User user = new User();
@@ -54,5 +55,11 @@ public class FeedController {
 		String username = userService.getUserById(userid).getUsername();
 		result.setUserName(username);
 		return result;
+	}
+	
+	@ApiOperation(value = "提交Feed" ,  notes="用户提交留言")
+	@RequestMapping(value = "/{userid}", method = RequestMethod.POST)
+	public void postFeed(@RequestBody Feed feed) {
+		feedService.postFeed(feed);
 	}
 }
