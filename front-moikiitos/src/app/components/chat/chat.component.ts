@@ -32,8 +32,8 @@ export class ChatComponent implements OnInit {
     this.feedService.getFeeds(Number(localStorage.getItem('user_id'))).subscribe(
      result => {
         this.userFeed = result;
-        // this.dailogOwner = result.userName;
-        this.dailogOwner = "tom";
+        this.dailogOwner = result.userName;
+        // this.dailogOwner = "tom";
      }
     
     );
