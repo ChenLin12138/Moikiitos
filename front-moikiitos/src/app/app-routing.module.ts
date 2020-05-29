@@ -5,6 +5,7 @@ import { DashBoardComponent } from './components/dashboard/dashboard.component';
 import { SecondComponent } from './components/second/second.component';
 import { MainComponent } from './components/main/main.component';
 import { AuthGuard } from './auth.guard';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,10 @@ const routes: Routes = [
          path : 'second',
          component : SecondComponent
        }
+       ,{
+        path : 'chat',
+        component : ChatComponent
+      }
     ] 
    }
 ];

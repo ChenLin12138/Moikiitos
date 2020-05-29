@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.loginService.doLogout();
     this.loginService.doLogin(data.name, data.password)
     .subscribe(
-      result => this.router.navigateByUrl('main'),
+      result => this.router.navigateByUrl('main/chat'),
       err => this.error = 'Could not authenticate'
     );
   }

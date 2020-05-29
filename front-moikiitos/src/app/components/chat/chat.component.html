@@ -1,0 +1,26 @@
+<div class="chatMain">
+    <div class="postField" style="border: 2px; border-style: solid; padding : 20px 20px 20px 20px; text-align: right;">
+        <form [formGroup]="chatForm" (ngSubmit)="onSubmit(chatForm.value)">
+            <div>
+              <input id="content" type="text" style="width: 100%; height: 80px; margin-bottom: 20px;" formControlName ="content" placeholder="Type something here...">
+            </div>
+            <button class="button" type="submit">Post</button>
+          </form>
+    </div>
+    <div class="chatContent" style="display: flex; justify-content: space-around; border: 2px; border-style: solid; margin-top: 20px;">
+        <div class="speaker" style="flex: 1; border-right-style: solid; border: 2px; padding : 20px 20px 20px 20px; margin-right: 5px;">
+            Jim
+        </div>
+        <div calss="dailog" style="flex: 7; padding : 20px 20px 20px 20px;">
+            Hello, my name is Jim Green.
+        </div>
+    </div>
+    <div class="chatContent" style="display: flex; border: 2px; border-style: solid; margin-top: 20px;">
+        <div class="speaker" style="flex: 1; border-style: solid; border:2px">
+            Tom
+        </div>
+        <div calss="dailog" style="flex: 7;">
+            Hello, my name is Tom Green.
+        </div>
+    </div>
+</div>
