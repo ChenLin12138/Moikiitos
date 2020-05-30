@@ -23,17 +23,17 @@ public interface FollowRelationshipMapper {
 	+" where userid = #{userid} and  followid = #{followid}")
 	public int deleteRecord(FollowRelationship record);
 	
-	@Select("select userid, followid, username, email"
-			+" from followrelationship"
-			+" inner join users"
-			+" on followid = users.id"
+	@Select("select f.userid as userid, f.followid as followid, u.username as name, u.email as email"
+			+" from followrelationship f"
+			+" inner join users u"
+			+" on followid = u.id"
 			+" where userid = #{userid}")
 			public List<FollowRelationship> selectByUserId(FollowRelationship record);
 	
-	@Select("select userid, followid, username, email"
-			+" from followrelationship"
-			+" inner join users"
-			+" on userid = users.id"
+	@Select("select f.userid as userid, f.followid as followid, u.username as name, u.email as email"
+			+" from followrelationship f"
+			+" inner join users u"
+			+" on f.userid = u.id"
 			+" where followid = #{followid}")
 			public List<FollowRelationship> selectByFollowId(FollowRelationship record);
 	

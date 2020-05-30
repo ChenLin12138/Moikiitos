@@ -11,18 +11,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.align.models.FollowRelationship;
 import com.align.models.User;
+import com.align.models.UserEmail;
 import com.align.services.IFollowService;
 import com.align.services.IUserService;
-import com.align.view.UserFollowView;
+import com.align.view.UserFollowListView;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * @author Chen Lin
  * @date 2020-02-09
  */
 
+@Api(tags="FollowerController")
 @RestController
-@RequestMapping(value = "/v1/moikiitos/follows")
-public class FollowController {
+@RequestMapping(value = "/v1/moikiitos/follower")
+public class FollowerController {
 	
 	@Autowired
 	IUserService userService;
@@ -30,44 +35,40 @@ public class FollowController {
 	@Autowired
 	IFollowService followService;
 	
-	
+	@ApiOperation(value = "根据传入的用户id，获取该用户关注和关注该用户的人" ,  notes="用户关注信息")
 	@RequestMapping(value = "/{userid}", method = RequestMethod.GET)
-	public UserFollowView getFeed(@PathVariable("userid") Integer userid) {
+	public UserFollowListView getFollowList(@PathVariable("userid") Integer userid) {
 		
 		User user = new User();
 		user.setId(userid);
-		UserFollowView result = new UserFollowView();
+		UserFollowListView result = new UserFollowListView();
 		
 		List<FollowRelationship> followerList = followService.getFollowersList(user);
-		List<User> followers = new ArrayList<User> ();
+		List<UserEmail> followers = new ArrayList<UserEmail> ();
 		
 		for(FollowRelationship e : followerList) {
-			User follower = new User();
-			follower.setId(e.getUserid());
-			follower.setUsername(e.getName());
+			UserEmail follower = new UserEmail();
+			follower.setUserId(e.getUserid());
+			follower.setUserName(e.getName());
 			follower.setEmail(e.getEmail());
 			followers.add(follower);
 		}
 		
-		result.setFollowers(followers);
+		result.setFollowerList(followers);
 		
 		List<FollowRelationship> followingList = followService.getFollowingList(user);
-		List<User> followings = new ArrayList<User> ();
+		List<UserEmail> followings = new ArrayList<UserEmail> ();
 		for(FollowRelationship e : followingList) {
-			User following = new User();
-			following.setId(e.getFollowid());
-			following.setUsername(e.getName());
+			UserEmail following = new UserEmail();
+			following.setUserId(e.getFollowid());
+			following.setUserName(e.getName());
 			following.setEmail(e.getEmail());
 			followings.add(following);
 		}
 		
-		result.setFollowing(followings);
+		result.setFollowingList(followings);
+		result.setUserId(userid);
 		
-		result.setFollowersCount(followService.countFollower(user));
-		result.setFollowingCount(followService.countFollowing(user));
-		
-		String username = userService.getUserById(userid).getUsername();
-		result.setUserName(username);
 		return result;
 	}
 	

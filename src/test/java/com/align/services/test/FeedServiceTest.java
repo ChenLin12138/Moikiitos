@@ -23,9 +23,9 @@ public class FeedServiceTest extends BaseServiceTest{
 	@Test
 	public void getFollowersListTest() {
 		User user = new User();
-		user.setId(1);
+		user.setId(2);
 		List<Feed> feeds = service.listFeed(user);	
-		Assert.assertTrue(3==feeds.size());
+		Assert.assertTrue(2==feeds.size());
 	}	
 	
 	@Test
