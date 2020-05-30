@@ -2,7 +2,7 @@
     <div class="postField">
         <form [formGroup]="chatForm" (ngSubmit)="onSubmit(chatForm.value)">
             <div>
-              <input id="content" class="dailogPost" type="text" formControlName ="content" placeholder="  Type something here...">
+              <textarea id="content" class="dailogPost" type="text" formControlName ="content" placeholder="  Type something here..."></textarea>
             </div>
             <button class="button" type="submit">Post</button>
           </form>
