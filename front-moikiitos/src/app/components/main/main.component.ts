@@ -26,7 +26,6 @@ export class MainComponent implements OnInit {
         this.userFeed.userName = result.userName;
         this.userFeed.followingCount = result.followingCount;
         this.userFeed.followersCount = result.followersCount;
-        this.testuserId = Number(localStorage.getItem('user_id'));
       }
     );
   }

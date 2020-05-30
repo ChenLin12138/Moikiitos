@@ -17,20 +17,12 @@
             </div>
         </div>
         <div class="fans-content" style="border-style: solid; border-width: 2px; padding: 40px 20px 40px 20px;">
-            <div class="chatContent">
+            <div class="chatContent" *ngFor="let following of followings">
                 <div class="speaker">
-                    Tom
+                    {{following.userName}}
                 </div>
                 <div class="dailog">
-                    tom@test.com
-                </div>
-            </div>
-            <div class="chatContent">
-                <div class="speaker">
-                    John
-                </div>
-                <div class="dailog">
-                    john@test.com
+                    {{following.email}}
                 </div>
             </div>
         </div>

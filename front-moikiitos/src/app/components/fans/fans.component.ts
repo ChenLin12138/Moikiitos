@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FansService } from 'src/app/services/fans.service';
+import { User } from '../../classes/user';
 
 @Component({
   selector: 'app-fans',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FansComponent implements OnInit {
 
-  constructor() { }
+  followings : User[];
+  followers : User[];
+
+  constructor(private fansService : FansService) { }
 
   ngOnInit(): void {
+    this.fansService.getRelationShip(Number(localStorage.getItem('user_id'))).subscribe(
+      r => {
+        this.followings = r.followingList;
+        this.followers = r.followerList;
+      }
+    );
   }
 
 }
