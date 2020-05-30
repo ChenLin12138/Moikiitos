@@ -12,15 +12,22 @@ export class FansComponent implements OnInit {
   followings : User[];
   followers : User[];
 
+  activeTable : number = 1;
+
   constructor(private fansService : FansService) { }
 
   ngOnInit(): void {
+    this.activeTable = 1;
     this.fansService.getRelationShip(Number(localStorage.getItem('user_id'))).subscribe(
       r => {
         this.followings = r.followingList;
         this.followers = r.followerList;
       }
     );
+  }
+
+  tabActive(tabNumber : number): void{
+    this.activeTable = tabNumber;
   }
 
 }

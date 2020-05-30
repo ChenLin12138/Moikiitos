@@ -8,23 +8,38 @@
         </div>
     </div>
     <div class="fans-panel" style="padding-top: 40px;"> 
+        
         <div class="fans-panel-tabs" style="display: flex; width: 40%; border-top-style: solid; border-left-style: solid;border-right-style: solid;;border-width: 2px;height: 40px;">
             <div class="fans-panel-tab-following" style="flex: 1;border-right-style: solid; border-width: 2px;padding: 10px 0px 10px 0px">
-                <a routerLink="fans">Following</a>
+                <a href="javascript:;" (click)="tabActive(1)">Following</a>
             </div>
             <div class="fans-panel-tab-following" style="flex: 1;padding: 10px 0px 10px 0px"> 
-                <a routerLink="fans">Followers</a>
+                <!-- <a routerLink="fans">Followers</a> -->
+                <a href="javascript:;" (click)="tabActive(2)">Followers</a>
             </div>
         </div>
-        <div class="fans-content" style="border-style: solid; border-width: 2px; padding: 40px 20px 40px 20px;">
-            <div class="chatContent" *ngFor="let following of followings">
+
+        <div [hidden]="activeTable == 2" class="fans-content" style="border-style: solid; border-width: 2px; padding: 40px 20px 40px 20px;">
+            <div class="chatContent" *ngFor="let item of followings">
                 <div class="speaker">
-                    {{following.userName}}
+                    {{item.userName}}
                 </div>
                 <div class="dailog">
-                    {{following.email}}
+                    {{item.email}}
                 </div>
             </div>
         </div>
+
+        <div [hidden]="activeTable == 1" class="fans-content" style="border-style: solid; border-width: 2px; padding: 40px 20px 40px 20px;">
+            <div class="chatContent" *ngFor="let item of followers">
+                <div class="speaker">
+                    {{item.userName}}
+                </div>
+                <div class="dailog">
+                    {{item.email}}
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
