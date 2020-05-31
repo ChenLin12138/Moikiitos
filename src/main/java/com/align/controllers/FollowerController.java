@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -72,15 +73,26 @@ public class FollowerController {
 		return result;
 	}
 	
-	@ApiOperation(value = "添加关注" ,  notes="通过用户id新添关注")
+	@ApiOperation(value = "添加关注" ,  notes="通过用户id添加关注")
 	@RequestMapping(value = "/{userid}", method = RequestMethod.POST)
-	public void follow(@PathVariable("userid") Integer userid) {
+	public void follow(@RequestBody FollowRelationship map) {
 		
+		User user = new User();
+		user.setId(map.getUserid());
+		
+		User toFollow = new User();
+		toFollow.setId(map.getFollowid());
+		followService.follow(user, toFollow);
 	}
 	
-	@ApiOperation(value = "添加关注" ,  notes="通过用户id新添关注")
+	@ApiOperation(value = "取消关注" ,  notes="通过用户id取消关注")
 	@RequestMapping(value = "/{userid}", method = RequestMethod.DELETE)
-	public void unfollow(@PathVariable("userid") Integer userid) {
+	public void unfollow(@RequestBody FollowRelationship map) {
+		User user = new User();
+		user.setId(map.getUserid());
 		
+		User unFollow = new User();
+		unFollow.setId(map.getFollowid());
+		followService.unfollow(user, unFollow);
 	}
 }
