@@ -25,11 +25,25 @@
     from users
     where email = #{email,jdbcType=VARCHAR}
   </select>
+  <select id="selectByEmailLike" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where email like #{email,jdbcType=VARCHAR}
+    limit 10
+  </select>
   <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from users
     where username = #{username,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByUsernameLike" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where username like #{username,jdbcType=VARCHAR}
+    limit 10
   </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

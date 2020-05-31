@@ -1,5 +1,7 @@
 package com.align.dao.mappers;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.context.annotation.Primary;
 
@@ -23,4 +25,8 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+	List<User> selectByEmailLike(String email);
+
+	List<User> selectByUsernameLike(String username);
 }

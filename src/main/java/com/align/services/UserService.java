@@ -36,8 +36,17 @@ public class UserService implements IUserService, UserDetailsService{
 		return mapper.selectByEmail(email);
 	}
 	
+	public List<User> getUserByEmailLike(String email) {
+		return mapper.selectByEmailLike("%"+email+"%");
+	}
+	
 	public User getUserByUsername(String username) {
 		return mapper.selectByUsername(username);
+	}
+	
+	
+	public List<User> getUserByUsernameLike(String username) {
+		return mapper.selectByUsernameLike("%"+username+"%");
 	}
 	
 	public void addUser(User user) {
