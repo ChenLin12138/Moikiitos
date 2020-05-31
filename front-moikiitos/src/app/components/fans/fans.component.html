@@ -16,15 +16,21 @@
             <div [hidden]="activeTable != 1" class="fans-panel-tab-following" style="flex: 1;border-right-style: solid; border-width: 2px;padding: 10px 0px 10px 0px">
                 <a style="color: grey;" href="javascript:;" (click)="tabActive(1)">Following</a>
             </div>
-            <div [hidden]="activeTable == 2" class="fans-panel-tab-following" style="flex: 1;padding: 10px 0px 10px 0px"> 
+            <div [hidden]="activeTable == 2" class="fans-panel-tab-following" style="flex: 1;border-right-style: solid; border-width: 2px;padding: 10px 0px 10px 0px"> 
                 <a href="javascript:;" (click)="tabActive(2)">Followers</a>
             </div>
-            <div [hidden]="activeTable != 2" class="fans-panel-tab-following" style="flex: 1;padding: 10px 0px 10px 0px"> 
+            <div [hidden]="activeTable != 2" class="fans-panel-tab-following" style="flex: 1;border-right-style: solid; border-width: 2px;padding: 10px 0px 10px 0px"> 
                 <a style="color: grey;" href="javascript:;" (click)="tabActive(2)">Followers</a>
+            </div>
+            <div [hidden]="activeTable == 3" class="fans-panel-tab-following" style="flex: 1;padding: 10px 0px 10px 0px"> 
+                <a href="javascript:;" (click)="tabActive(3)">Search</a>
+            </div>
+            <div [hidden]="activeTable != 3" class="fans-panel-tab-following" style="flex: 1;padding: 10px 0px 10px 0px"> 
+                <a style="color: grey;" href="javascript:;" (click)="tabActive(3)">Search</a>
             </div>
         </div>
 
-        <div [hidden]="activeTable == 2" class="fans-content" style="border-style: solid; border-width: 2px; padding: 40px 20px 40px 20px;">
+        <div [hidden]="activeTable != 1" class="fans-content" style="border-style: solid; border-width: 2px; padding: 40px 20px 40px 20px;">
             <div class="chatContent" *ngFor="let item of followings">
                 <div class="speaker">
                     {{item.userName}}
@@ -35,8 +41,19 @@
             </div>
         </div>
 
-        <div [hidden]="activeTable == 1" class="fans-content" style="border-style: solid; border-width: 2px; padding: 40px 20px 40px 20px;">
+        <div [hidden]="activeTable != 2" class="fans-content" style="border-style: solid; border-width: 2px; padding: 40px 20px 40px 20px;">
             <div class="chatContent" *ngFor="let item of followers">
+                <div class="speaker">
+                    {{item.userName}}
+                </div>
+                <div class="dailog">
+                    {{item.email}}
+                </div>
+            </div>
+        </div>
+
+        <div [hidden]="activeTable != 3" class="fans-content" style="border-style: solid; border-width: 2px; padding: 40px 20px 40px 20px;">
+            <div class="chatContent" *ngFor="let item of searchUsers">
                 <div class="speaker">
                     {{item.userName}}
                 </div>

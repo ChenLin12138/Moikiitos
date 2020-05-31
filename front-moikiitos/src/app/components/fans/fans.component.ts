@@ -11,7 +11,7 @@ export class FansComponent implements OnInit {
 
   followings : User[];
   followers : User[];
-
+  searchUsers : User[];
   activeTable : number = 1;
 
   constructor(private fansService : FansService) { }
