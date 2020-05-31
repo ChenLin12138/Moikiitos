@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.align.dao.mappers.FollowRelationshipMapper;
-import com.align.models.FollowRelationship;
+import com.align.dao.mappers.UserFollowMapper;
 import com.align.models.User;
+import com.align.models.UserFollow;
+import com.align.view.FollowRelationshipView;
 
 /**
  * @author Chen Lin
@@ -15,35 +16,18 @@ import com.align.models.User;
  */
 
 @Service
-public class FollowService implements IFollowService{
+public class FollowService{
 
 	@Autowired
-	FollowRelationshipMapper mapper;
+	UserFollowMapper mapper;
 	
-	/*
-	 * user1 follow user 2
-	 * @param User1
-	 * @param User2
-	 * */
-	public void follow(User user1, User user2){
-		
-		FollowRelationship record = new FollowRelationship();
-		record.setUserid(user1.getId());
-		record.setFollowid(user2.getId());
-		mapper.insert(record);
+	
+	public void follow(UserFollow userFollow){
+		mapper.insert(userFollow);
 	}
 	
-	/*
-	 * user1 unfollow user 2
-	 * @param User1
-	 * @param User2
-	 * */
-	public void unfollow(User user1, User user2){
-		
-		FollowRelationship record = new FollowRelationship();
-		record.setUserid(user1.getId());
-		record.setFollowid(user2.getId());
-		mapper.deleteRecord(record);
+	public void unfollow(Integer primaryKey){
+		mapper.deleteByPrimaryKey(primaryKey);
 	}
 	
 	/*
@@ -51,12 +35,13 @@ public class FollowService implements IFollowService{
 	 *  @param user a user
 	 * 	@return the list who follow the input user
 	 * */
-	public List<FollowRelationship> getFollowersList(User user){
+	public List<UserFollow> getFollowersList(User user){
+		return mapper.selectByFollowId(user.getId());
+	}
 		
-		FollowRelationship record = new FollowRelationship();
-		record.setFollowid(user.getId());
-		return mapper.selectByFollowId(record);
-		
+
+	public List<FollowRelationshipView> getFollowersListWithNameAndEmail (User user){
+		return mapper.selectByFollowIdWithNameAndEmail(user.getId());
 	}
 		
 	/*
@@ -64,22 +49,25 @@ public class FollowService implements IFollowService{
 	 *  @param user a user
 	 * 	@return the list who is followed by input user
 	 * */
-	public List<FollowRelationship> getFollowingList (User user){
-		FollowRelationship record = new FollowRelationship();
-		record.setUserid(user.getId());
-		return mapper.selectByUserId(record);
+	public List<UserFollow> getFollowingList (User user){
+		return mapper.selectByUserId(user.getId());
 	}
 	
+	public UserFollow getUserFollow (int uid, int fid){
+		return mapper.selectByUserIdAndFollowId(uid,fid);
+	}
+	
+	public List<FollowRelationshipView> getFollowingListWithNameAndEmail(User user){
+		return mapper.selectByUserIdWithNameAndEmail(user.getId());
+	}
+	
+	
 	public int countFollower(User user) {
-		FollowRelationship record = new FollowRelationship();
-		record.setFollowid(user.getId());
-		return mapper.countByFollowId(record);
+		return mapper.countByFollowId(user.getId());
 	}
 	
 	public int countFollowing(User user) {
-		FollowRelationship record = new FollowRelationship();
-		record.setUserid(user.getId());
-		return mapper.countByUserId(record);
+		return mapper.countByUserId(user.getId());
 	}
 
 }

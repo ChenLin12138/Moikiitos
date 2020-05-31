@@ -73,7 +73,7 @@ public class FollowerController {
 		return result;
 	}
 	
-	@ApiOperation(value = "添加关注" ,  notes="通过用户id添加关注")
+	@ApiOperation(value = "添加关注" ,  notes="通过用户id组添加关注")
 	@RequestMapping(value = "/{userid}", method = RequestMethod.POST)
 	public void follow(@RequestBody FollowRelationship map) {
 		
@@ -85,7 +85,7 @@ public class FollowerController {
 		followService.follow(user, toFollow);
 	}
 	
-	@ApiOperation(value = "取消关注" ,  notes="通过用户id取消关注")
+	@ApiOperation(value = "取消关注" ,  notes="通过用户id组取消关注")
 	@RequestMapping(value = "/{userid}", method = RequestMethod.DELETE)
 	public void unfollow(@RequestBody FollowRelationship map) {
 		User user = new User();

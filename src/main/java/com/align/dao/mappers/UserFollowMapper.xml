@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.align.dao.mappers.UserFollowMapper" >
+  <resultMap id="BaseResultMap" type="com.align.models.UserFollow" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="followid" property="followid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userid, followid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_follow
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUserIdWithNameAndEmail" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    f.userid as userid, f.followid as followid, u.username as name, u.email as email
+    from user_follow f
+    inner join users u
+    on followid = u.id
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+  <select id="selectByFollowIdWithNameAndEmail" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    f.userid as userid, f.followid as followid, u.username as name, u.email as email
+    from user_follow f
+    inner join users u
+    on followid = u.id
+    where followid = #{followid,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_follow 
+    where userid = #{userid,jdbcType=INTEGER}
+  </select> 
+  <select id="selectByUserIdAndFollowId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_follow 
+    where userid = #{uid,jdbcType=INTEGER}
+    and followid = #{fid,jdbcType=INTEGER}
+  </select>   
+  
+  <select id="selectByFollowId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_follow 
+    where followid = #{followid,jdbcType=INTEGER}
+  </select>
+  <select id="countByUserId" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+    select 
+    count(*)
+    from user_follow 
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>  
+  <select id="countByFollowId" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+    select 
+    count(*)
+    from user_follow 
+    where followid = #{followid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_follow
+    where id = #{followid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.align.models.UserFollow" >
+    insert into user_follow (id, userid, followid
+      )
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{followid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.align.models.UserFollow" >
+    insert into user_follow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="followid != null" >
+        followid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="followid != null" >
+        #{followid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.align.models.UserFollow" >
+    update user_follow
+    <set >
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="followid != null" >
+        followid = #{followid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.align.models.UserFollow" >
+    update user_follow
+    set userid = #{userid,jdbcType=INTEGER},
+      followid = #{followid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

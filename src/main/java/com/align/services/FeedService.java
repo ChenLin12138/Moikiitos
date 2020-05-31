@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.align.dao.mappers.FeedMapper;
 import com.align.models.Feed;
-import com.align.models.FollowRelationship;
 import com.align.models.User;
+import com.align.models.UserFollow;
 
 /**
  * @author Chen Lin
@@ -44,7 +44,7 @@ public class FeedService implements IFeedService{
 		
 		ids.add(user.getId());
 		
-		for(FollowRelationship followRelationship : followService.getFollowingList(user)) {
+		for(UserFollow followRelationship : followService.getFollowingList(user)) {
 			ids.add(followRelationship.getFollowid());
 		}
 		

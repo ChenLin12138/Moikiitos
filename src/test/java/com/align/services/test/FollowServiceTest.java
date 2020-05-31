@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.align.models.FollowRelationship;
 import com.align.models.User;
+import com.align.models.UserFollow;
 import com.align.services.FollowService;
 import com.align.services.UserService;
 
@@ -75,10 +76,32 @@ public class FollowServiceTest extends BaseServiceTest{
 		user3.setAccountNonExpired(true);
 		user3.setEnabled(true);
 		
-		service.follow(user0, superStar);
-		service.follow(user1, superStar);
-		service.follow(user2, superStar);
-		service.follow(user0, user3);
+		
+		UserFollow follow0 = new UserFollow();
+		follow0.setUserid(900000000);
+		follow0.setFollowid(900000003);
+		
+		UserFollow follow1 = new UserFollow();
+		follow1.setUserid(900000001);
+		follow1.setFollowid(999999999);
+		
+		UserFollow follow2 = new UserFollow();
+		follow2.setUserid(900000002);
+		follow2.setFollowid(999999999);
+		
+		UserFollow follow3 = new UserFollow();
+		follow3.setUserid(900000000);
+		follow3.setFollowid(999999999);
+		
+		service.follow(follow0);
+		service.follow(follow1);
+		service.follow(follow2);
+		service.follow(follow3);
+		
+		
+//		service.follow(user1, superStar);
+//		service.follow(user2, superStar);
+//		service.follow(user0, user3);
 		
 		userService.addUser(user0);
 		userService.addUser(user1);
@@ -91,37 +114,35 @@ public class FollowServiceTest extends BaseServiceTest{
 	@Test
 	public void getFollowersListTest() {
 		
-		List<FollowRelationship> list = service.getFollowersList(superStar);		
-		Assert.assertTrue(list.contains(new FollowRelationship(900000000,999999999)));
-		Assert.assertTrue(list.contains(new FollowRelationship(900000001,999999999)));
-		Assert.assertTrue(list.contains(new FollowRelationship(900000002,999999999)));
-		Assert.assertTrue(!list.contains(new FollowRelationship(900000003,999999999)));
+		List<UserFollow> list = service.getFollowersList(superStar);		
+		Assert.assertTrue(3==list.size());
 	}	
 	
 	
 	@Test
 	public void getFollowingListTest() {
 		
-		List<FollowRelationship> list = service.getFollowingList(user0);	
-		Assert.assertTrue(list.contains(new FollowRelationship(900000000,999999999)));
-		Assert.assertTrue(list.contains(new FollowRelationship(900000000,900000003)));
+		List<UserFollow> list = service.getFollowingList(user0);	
+		Assert.assertTrue(2==list.size());
 	}	
 	
 	@Test
 	public void countFollowerTest() {
+		System.out.println(service.countFollower(superStar));
 		Assert.assertTrue(3==service.countFollower(superStar));
 	}
 	
 	@Test
 	public void countFollowingTest() {
+		System.out.println(service.countFollowing(user0));
 		Assert.assertTrue(2==service.countFollowing(user0));
 	}
 	
 	@Test
 	public void unFollowTest() {
-		List<FollowRelationship> list = service.getFollowersList(superStar);
-		service.unfollow(user0, superStar);	
+		List<UserFollow> list = service.getFollowersList(superStar);
+		service.unfollow(service.getUserFollow(900000000, 999999999).getId());	
 		list = service.getFollowersList(superStar);
-		Assert.assertTrue(!list.contains(new FollowRelationship(900000000,999999999)));
+		Assert.assertTrue(2==list.size());
 	}
 }
