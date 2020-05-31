@@ -23,8 +23,10 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 		//测试用的
 //		http.authorizeRequests().anyRequest().permitAll();
 		
-		http.authorizeRequests()
-		.antMatchers(HttpMethod.GET, "/v1/moikiitos/**")
-		.authenticated();
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/v1/moikiitos/**").authenticated()
+		.and()
+		.authorizeRequests().antMatchers(HttpMethod.POST,"/v1/moikiitos/user/").permitAll()
+		.and()
+		.authorizeRequests().antMatchers(HttpMethod.POST,"/v1/moikiitos/**").authenticated();
 	}
 }
