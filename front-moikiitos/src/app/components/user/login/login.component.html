@@ -1,19 +1,57 @@
 <div class="login-frame" style="text-align: center; margin: 180px auto 180px auto; padding: 15px 35px 15px 35px;">
   <div class="login-context" style="width: 100%;">
     <h1>Moi Kiitos</h1>
-    <form style="border-style: solid; border-width: 2px; padding: 20px 20px 20px 20px;" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
-      <h2 style="margin-bottom: 20px;">Welcome</h2>
-      <div class="login-user" style="margin-bottom: 20px;">
-        <input id="name" style="width: 80%;height: 40px;"  type="text" formControlName ="name" placeholder="  Name/Email">
-      </div>
-    
-      <div class="login-pwd" style="margin-bottom: 20px;">
-        <input id="password" style="width: 80%; height: 40px;" type="text" formControlName ="password" placeholder="  Password">
-      </div>
+    <div class="login-form" [hidden]="page!=1">
+      <form style="border-style: solid; border-width: 2px; padding: 20px 20px 20px 20px;" [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
+        <h2 style="margin-bottom: 20px;">Welcome</h2>
+        <div class="login-user" style="margin-bottom: 20px;">
+          <input id="name" style="width: 80%;height: 40px;"  type="text" formControlName ="name" placeholder="  Name/Email">
+        </div>
       
-      <div class="login-submit">
-        <button style="width: 40%; height: 40px;"  class="login-submit" type="submit">Login</button>
-      </div>
-    </form>
+        <div class="login-pwd" style="margin-bottom: 20px;">
+          <input id="password" style="width: 80%; height: 40px;" type="text" formControlName ="password" placeholder="  Password">
+        </div>
+        
+        <div class="login-submit">
+          <button style="width: 40%; height: 40px;"  class="login-submit" type="submit">Submit</button>
+        </div>
+
+        <div class="Sign-Up" style="text-align: right; padding-right: 10%;">
+          <a href="javascript:;" (click)="pageActive(2)">Sign up</a>
+        </div>
+     
+      </form>
+    </div>
+
+    <div [hidden]="page!=2" class="signup-form">
+      <form style="border-style: solid; border-width: 2px; padding: 20px 20px 20px 20px;" [formGroup]="signupForm" (ngSubmit)="onSignup(signupForm.value)">
+        <h2 style="margin-bottom: 20px;">Welcome</h2>
+        <div class="login-user" style="margin-bottom: 20px;">
+          <input id="name" style="width: 80%;height: 40px;"  type="text" formControlName ="name" placeholder="  Name">
+        </div>
+
+        <div class="login-user" style="margin-bottom: 20px;">
+          <input id="email" style="width: 80%;height: 40px;"  type="text" formControlName ="email" placeholder="  Email">
+        </div>
+      
+        <div class="login-pwd" style="margin-bottom: 20px;">
+          <input id="password" style="width: 80%; height: 40px;" type="text" formControlName ="password" placeholder="  Password">
+        </div>
+
+        <div class="login-pwd" style="margin-bottom: 20px;">
+          <input id="passwordConfirm" style="width: 80%; height: 40px;" type="text" formControlName ="passwordConfirm" placeholder="  Password Confirmation">
+        </div>
+        
+        <div class="login-submit">
+          <button style="width: 40%; height: 40px;"  class="login-submit" type="submit">Submit</button>
+        </div>
+
+        <div class="Sign-Up" style="text-align: right; padding-right: 10%;">
+          <a href="javascript:;" (click)="pageActive(1)">Sign in</a>
+        </div>
+     
+      </form>
+    </div>
+
   </div>
 </div>

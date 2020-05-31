@@ -11,8 +11,11 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   public loginForm;
+  public signupForm;
   public result;
   public error : string ;
+  public page : number;
+  
   
 
   constructor(private formBuilder : FormBuilder, private loginService : LoginService, private router : Router) { 
@@ -20,12 +23,20 @@ export class LoginComponent implements OnInit {
       name : ''
       ,password : ''
     })
+
+    this.signupForm = this.formBuilder.group({
+      name : ''
+      ,email : ''
+      , password : ''
+      ,passwordConfirm : ''
+    })
   }
 
   ngOnInit(): void {
+    this.page=1;
   }
 
-  onSubmit(data) {
+  onLogin(data) {
 
     if(localStorage.getItem('access_token') && localStorage.getItem('user_name')==data.name){
       this.router.navigateByUrl('main');
@@ -38,5 +49,13 @@ export class LoginComponent implements OnInit {
       result => this.router.navigateByUrl('main/chat'),
       err => this.error = 'Could not authenticate'
     );
+  }
+
+  onSignup(data) {
+    console.log(data);
+  }
+
+  pageActive(page : number) {
+    this.page = page;
   }
 }
