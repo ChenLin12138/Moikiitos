@@ -33,21 +33,22 @@
         <div [hidden]="activeTable != 1" class="fans-content" style="border-style: solid; border-width: 2px; padding: 40px 20px 40px 20px;">
             <div class="chatContent" *ngFor="let item of followings">
                 <div class="speaker">
-                    {{item.userName}}
+                    {{item.followName}}
                 </div>
                 <div class="dailog">
-                    {{item.email}}
+                    {{item.followEmail}}
                 </div>
+                <button (click)=onUnFollow(item.id) style="flex: 0.3;">-</button>
             </div>
         </div>
 
         <div [hidden]="activeTable != 2" class="fans-content" style="border-style: solid; border-width: 2px; padding: 40px 20px 40px 20px;">
             <div class="chatContent" *ngFor="let item of followers">
                 <div class="speaker">
-                    {{item.userName}}
+                    {{item.followName}}
                 </div>
                 <div class="dailog">
-                    {{item.email}}
+                    {{item.followEmail}}
                 </div>
             </div>
         </div>
@@ -59,6 +60,9 @@
                 </div>
                 <div class="dailog">
                     {{item.email}}
+                </div>
+                <div style="flex: 1;">
+                    <button>+</button>
                 </div>
             </div>
         </div>

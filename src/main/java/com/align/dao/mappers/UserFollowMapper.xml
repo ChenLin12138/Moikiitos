@@ -29,6 +29,7 @@
     where userid = #{userid,jdbcType=INTEGER}
   </select>
   <select id="selectByFollowIdWithNameAndEmail" resultMap="UserFollowViewResultMap" parameterType="java.lang.Integer" >
+    select 
     <include refid="UserFollowView_Column_List" />
     from user_follow f
     inner join users u

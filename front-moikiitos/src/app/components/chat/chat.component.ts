@@ -47,7 +47,6 @@ export class ChatComponent implements OnInit {
     this.feedService.postFeed(this.postFeed).subscribe(
       // result => this.router.navigateByUrl('main/chat')
       result => {
-        console.log(result);
         this.ngOnInit();
       }
     );

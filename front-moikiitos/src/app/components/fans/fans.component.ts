@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FansService } from 'src/app/services/fans.service';
 import { User } from '../../classes/user';
+import { UserFollowView } from 'src/app/classes/userfollowview';
 
 @Component({
   selector: 'app-fans',
@@ -9,11 +10,12 @@ import { User } from '../../classes/user';
 })
 export class FansComponent implements OnInit {
 
-  followings : User[];
-  followers : User[];
+  followings : UserFollowView[];
+  followers : UserFollowView[];
   searchUsers : User[];
   activeTable : number = 1;
   keyWords : String = "";
+  userFollowView : UserFollowView;
 
   constructor(private fansService : FansService) { }
 
@@ -33,14 +35,21 @@ export class FansComponent implements OnInit {
 
   onSearch(){
     this.activeTable = 3;
-    console.log("search");
-    console.log(this.keyWords);
     this.fansService.searchUserByKeyWord(this.keyWords).subscribe(
       r =>{
         this.searchUsers = r;
-        console.log(r);
       }
     );
+  }
+
+  onUnFollow(followId : number){
+    // this.userFollowView.userId = Number(localStorage.getItem('user_id'));
+    // this.relationMap.followid = followId;
+    // this.fansService.unFollow(this.relationMap).subscribe(
+    //   r => {
+    //     this.ngOnInit();
+    //   }
+    // );
   }
 
 }
