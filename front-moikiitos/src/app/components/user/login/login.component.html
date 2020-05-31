@@ -1,18 +1,19 @@
-
-<h1>Welcome Users</h1>
-
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
-
-  <div>
-    <label for="name"> Name </label>
-    <input id="name" type="text" formControlName ="name">
+<div class="login-frame" style="text-align: center; margin: 180px auto 180px auto; padding: 15px 35px 15px 35px;">
+  <div class="login-context" style="width: 100%;">
+    <h1>Moi Kiitos</h1>
+    <form style="border-style: solid; border-width: 2px; padding: 20px 20px 20px 20px;" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+      <h2 style="margin-bottom: 20px;">Welcome</h2>
+      <div class="login-user" style="margin-bottom: 20px;">
+        <input id="name" style="width: 80%;height: 40px;"  type="text" formControlName ="name" placeholder="  Name/Email">
+      </div>
+    
+      <div class="login-pwd" style="margin-bottom: 20px;">
+        <input id="password" style="width: 80%; height: 40px;" type="text" formControlName ="password" placeholder="  Password">
+      </div>
+      
+      <div class="login-submit">
+        <button style="width: 40%; height: 40px;"  class="login-submit" type="submit">Login</button>
+      </div>
+    </form>
   </div>
-
-  <div>
-    <label for="password"> Password </label>
-    <input id="password" type="text" formControlName ="password">
-  </div>
-
-  <button class="button" type="submit">Login</button>
-
-</form>
+</div>
