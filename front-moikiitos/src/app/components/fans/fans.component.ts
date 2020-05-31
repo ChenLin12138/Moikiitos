@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FansService } from 'src/app/services/fans.service';
 import { User } from '../../classes/user';
 import { UserFollowView } from 'src/app/classes/userfollowview';
+import { UserFollow } from 'src/app/classes/userfollow';
 
 @Component({
   selector: 'app-fans',
@@ -12,10 +13,10 @@ export class FansComponent implements OnInit {
 
   followings : UserFollowView[];
   followers : UserFollowView[];
+  userFollow : UserFollow = new UserFollow();
   searchUsers : User[];
   activeTable : number = 1;
   keyWords : String = "";
-  userFollowView : UserFollowView;
 
   constructor(private fansService : FansService) { }
 
@@ -50,12 +51,15 @@ export class FansComponent implements OnInit {
     );
   }
 
-  // onFollow(userFollowId : number){
-  //   this.fansService.unFollow(userFollowId).subscribe(
-  //     r => {
-  //       this.ngOnInit();
-  //     }
-  //   );
-  // }
+  onFollow(toFollowId : number){
+    let userFollow : UserFollow = new UserFollow();
+    userFollow.followid = toFollowId;
+    userFollow.userid = Number(localStorage.getItem('user_id'));
+    this.fansService.follow(userFollow).subscribe(
+      r => {
+        this.ngOnInit();
+      }
+    );
+  }
 
 }
