@@ -14,6 +14,7 @@ import com.align.models.UserEmail;
 import com.align.services.UserService;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * @author Chen Lin
@@ -28,6 +29,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@ApiOperation(value = "根据keywords查找用户" ,  notes="keywords用户模糊匹配用户名和用户邮箱")
 	@RequestMapping(value = "/keyword/{keyword}", method = RequestMethod.GET)
 	public List<UserEmail> searchUser(@PathVariable("keyword") String keyword) {
 		

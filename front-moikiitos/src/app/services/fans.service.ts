@@ -8,7 +8,7 @@ import { User } from '../classes/user';
 })
 export class FansService {
 
-  fansUrl : string =  "http://moikiitos.com/v1/moikiitos/follower/";
+  fansUrl : string =  "http://moikiitos.com/v1/moikiitos/follow/";
   searchUserUrl : string =  "http://moikiitos.com/v1/moikiitos/user/keyword/";
   constructor(private http : HttpClient) { }
 

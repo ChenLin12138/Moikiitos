@@ -26,7 +26,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(tags="FollowerController")
 @RestController
-@RequestMapping(value = "/v1/moikiitos/follower")
+@RequestMapping(value = "/v1/moikiitos/follow")
 public class FollowerController {
 	
 	@Autowired
@@ -35,7 +35,7 @@ public class FollowerController {
 	@Autowired
 	IFollowService followService;
 	
-	@ApiOperation(value = "根据传入的用户id，获取该用户关注和关注该用户的人" ,  notes="用户关注信息")
+	@ApiOperation(value = "获取用户关注和关注用户的列表" ,  notes="根据传入的用户id，获取该用户关注和关注该用户的人")
 	@RequestMapping(value = "/{userid}", method = RequestMethod.GET)
 	public UserFollowListView getFollowList(@PathVariable("userid") Integer userid) {
 		
@@ -72,8 +72,15 @@ public class FollowerController {
 		return result;
 	}
 	
-	@RequestMapping(value = "/search/{keyword}", method = RequestMethod.POST)
-	public User searchUser(@PathVariable("keyword") String keyword) {
-		return new User();
+	@ApiOperation(value = "添加关注" ,  notes="通过用户id新添关注")
+	@RequestMapping(value = "/{userid}", method = RequestMethod.POST)
+	public void follow(@PathVariable("userid") Integer userid) {
+		
+	}
+	
+	@ApiOperation(value = "添加关注" ,  notes="通过用户id新添关注")
+	@RequestMapping(value = "/{userid}", method = RequestMethod.DELETE)
+	public void unfollow(@PathVariable("userid") Integer userid) {
+		
 	}
 }
