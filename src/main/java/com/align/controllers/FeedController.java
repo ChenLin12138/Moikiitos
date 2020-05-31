@@ -3,7 +3,6 @@ package com.align.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.align.models.Feed;
 import com.align.models.User;
+import com.align.services.FollowService;
 import com.align.services.IFeedService;
-import com.align.services.IFollowService;
 import com.align.services.IUserService;
 import com.align.view.FeedView;
 
@@ -38,7 +37,7 @@ public class FeedController {
 	IUserService userService;
 	
 	@Autowired
-	IFollowService followService;
+	FollowService followService;
 	
 	@ApiOperation(value = "获取Feed信息" ,  notes="获取与该用户相关的留言信息")
 	@RequestMapping(value = "/{userid}", method = RequestMethod.GET)

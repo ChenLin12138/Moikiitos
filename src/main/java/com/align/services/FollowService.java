@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.align.dao.mappers.UserFollowMapper;
 import com.align.models.User;
 import com.align.models.UserFollow;
-import com.align.view.FollowRelationshipView;
+import com.align.view.UserFollowView;
 
 /**
  * @author Chen Lin
@@ -40,7 +40,7 @@ public class FollowService{
 	}
 		
 
-	public List<FollowRelationshipView> getFollowersListWithNameAndEmail (User user){
+	public List<UserFollowView> getFollowersListWithNameAndEmail (User user){
 		return mapper.selectByFollowIdWithNameAndEmail(user.getId());
 	}
 		
@@ -57,7 +57,7 @@ public class FollowService{
 		return mapper.selectByUserIdAndFollowId(uid,fid);
 	}
 	
-	public List<FollowRelationshipView> getFollowingListWithNameAndEmail(User user){
+	public List<UserFollowView> getFollowingListWithNameAndEmail(User user){
 		return mapper.selectByUserIdWithNameAndEmail(user.getId());
 	}
 	

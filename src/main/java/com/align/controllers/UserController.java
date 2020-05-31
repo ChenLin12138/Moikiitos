@@ -52,7 +52,6 @@ public class UserController {
 				result.add(userEmail);
 			}
 		}
-		
 		return result;
 	}
 	

@@ -6,8 +6,13 @@
     <result column="userid" property="userid" jdbcType="INTEGER" />
     <result column="followid" property="followid" jdbcType="INTEGER" />
   </resultMap>
+  <resultMap id="UserFollowViewResultMap" type="com.align.view.UserFollowView" >
+  </resultMap>
   <sql id="Base_Column_List" >
     id, userid, followid
+  </sql>
+  <sql id="UserFollowView_Column_List" >
+    f.id as id, f.userid as userId, f.followid as followId, u.username as followName, u.email as followEmail
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -15,17 +20,16 @@
     from user_follow
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectByUserIdWithNameAndEmail" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByUserIdWithNameAndEmail" resultMap="UserFollowViewResultMap" parameterType="java.lang.Integer" >
     select 
-    f.userid as userid, f.followid as followid, u.username as name, u.email as email
+    f.id as id, f.userid as userId, f.followid as followId, u.username as followName, u.email as followEmail
     from user_follow f
     inner join users u
     on followid = u.id
     where userid = #{userid,jdbcType=INTEGER}
   </select>
-  <select id="selectByFollowIdWithNameAndEmail" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    f.userid as userid, f.followid as followid, u.username as name, u.email as email
+  <select id="selectByFollowIdWithNameAndEmail" resultMap="UserFollowViewResultMap" parameterType="java.lang.Integer" >
+    <include refid="UserFollowView_Column_List" />
     from user_follow f
     inner join users u
     on followid = u.id

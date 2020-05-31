@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.context.annotation.Primary;
 
 import com.align.models.UserFollow;
-import com.align.view.FollowRelationshipView;
+import com.align.view.UserFollowView;
 
 @Primary
 @Mapper
@@ -25,9 +25,9 @@ public interface UserFollowMapper {
 
     int updateByPrimaryKey(UserFollow record);
     
-    List<FollowRelationshipView> selectByUserIdWithNameAndEmail(Integer uid);
+    List<UserFollowView> selectByUserIdWithNameAndEmail(Integer uid);
     
-    List<FollowRelationshipView> selectByFollowIdWithNameAndEmail(Integer fid);
+    List<UserFollowView> selectByFollowIdWithNameAndEmail(Integer fid);
     
     List<UserFollow> selectByUserId(Integer uid);
     

@@ -2,14 +2,16 @@ package com.align.models;
 
 /**
  * @author Chen Lin
- * @date 2020-05-31
+ * @date 2020-05-30
  */
 
-public class UserEmail {
+public class UserFollowWithEmail {
 	
 	private Integer userId;
 	private String userName;
 	private String email;
+	private Integer fId;
+	
 	public Integer getUserId() {
 		return userId;
 	}
@@ -28,5 +30,11 @@ public class UserEmail {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	public Integer getfId() {
+		return fId;
+	}
+	public void setfId(Integer fId) {
+		this.fId = fId;
+	}
+	
 }

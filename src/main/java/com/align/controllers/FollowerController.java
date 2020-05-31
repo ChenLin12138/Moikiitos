@@ -1,6 +1,5 @@
 package com.align.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.align.models.FollowRelationship;
 import com.align.models.User;
-import com.align.models.UserEmail;
-import com.align.services.IFollowService;
+import com.align.models.UserFollow;
+import com.align.services.FollowService;
 import com.align.services.IUserService;
 import com.align.view.UserFollowListView;
+import com.align.view.UserFollowView;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,7 +34,7 @@ public class FollowerController {
 	IUserService userService;
 	
 	@Autowired
-	IFollowService followService;
+	FollowService followService;
 	
 	@ApiOperation(value = "获取用户关注和关注用户的列表" ,  notes="根据传入的用户id，获取该用户关注和关注该用户的人")
 	@RequestMapping(value = "/{userid}", method = RequestMethod.GET)
@@ -44,30 +44,30 @@ public class FollowerController {
 		user.setId(userid);
 		UserFollowListView result = new UserFollowListView();
 		
-		List<FollowRelationship> followerList = followService.getFollowersList(user);
-		List<UserEmail> followers = new ArrayList<UserEmail> ();
+		List<UserFollowView> followerList = followService.getFollowersListWithNameAndEmail(user);
+//		List<UserEmail> followers = new ArrayList<UserEmail> ();
 		
-		for(FollowRelationship e : followerList) {
-			UserEmail follower = new UserEmail();
-			follower.setUserId(e.getUserid());
-			follower.setUserName(e.getName());
-			follower.setEmail(e.getEmail());
-			followers.add(follower);
-		}
+//		for(FollowRelationshipView e : followerList) {
+//			UserEmail follower = new UserEmail();
+//			follower.setUserId(e.getUserid());
+//			follower.setUserName(e.getName());
+//			follower.setEmail(e.getEmail());
+//			followers.add(follower);
+//		}
 		
-		result.setFollowerList(followers);
+		result.setFollowerList(followerList);
 		
-		List<FollowRelationship> followingList = followService.getFollowingList(user);
-		List<UserEmail> followings = new ArrayList<UserEmail> ();
-		for(FollowRelationship e : followingList) {
-			UserEmail following = new UserEmail();
-			following.setUserId(e.getFollowid());
-			following.setUserName(e.getName());
-			following.setEmail(e.getEmail());
-			followings.add(following);
-		}
+		List<UserFollowView> followingList = followService.getFollowingListWithNameAndEmail(user);
+//		List<UserEmail> followings = new ArrayList<UserEmail> ();
+//		for(FollowRelationship e : followingList) {
+//			UserEmail following = new UserEmail();
+//			following.setUserId(e.getFollowid());
+//			following.setUserName(e.getName());
+//			following.setEmail(e.getEmail());
+//			followings.add(following);
+//		}
 		
-		result.setFollowingList(followings);
+		result.setFollowingList(followingList);
 		result.setUserId(userid);
 		
 		return result;
@@ -75,24 +75,13 @@ public class FollowerController {
 	
 	@ApiOperation(value = "添加关注" ,  notes="通过用户id组添加关注")
 	@RequestMapping(value = "/{userid}", method = RequestMethod.POST)
-	public void follow(@RequestBody FollowRelationship map) {
-		
-		User user = new User();
-		user.setId(map.getUserid());
-		
-		User toFollow = new User();
-		toFollow.setId(map.getFollowid());
-		followService.follow(user, toFollow);
+	public void follow(@RequestBody UserFollow userFollow) {
+		followService.follow(userFollow);
 	}
 	
 	@ApiOperation(value = "取消关注" ,  notes="通过用户id组取消关注")
 	@RequestMapping(value = "/{userid}", method = RequestMethod.DELETE)
-	public void unfollow(@RequestBody FollowRelationship map) {
-		User user = new User();
-		user.setId(map.getUserid());
-		
-		User unFollow = new User();
-		unFollow.setId(map.getFollowid());
-		followService.unfollow(user, unFollow);
+	public void unfollow(@PathVariable("userid") Integer userid) {
+		followService.unfollow(userid);
 	}
 }
