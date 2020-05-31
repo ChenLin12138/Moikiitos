@@ -28,7 +28,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value = "/name/{keyword}", method = RequestMethod.GET)
+	@RequestMapping(value = "/keyword/{keyword}", method = RequestMethod.GET)
 	public List<UserEmail> searchUser(@PathVariable("keyword") String keyword) {
 		
 		List<UserEmail> result = new ArrayList<UserEmail>();

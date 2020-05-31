@@ -13,6 +13,7 @@ export class FansComponent implements OnInit {
   followers : User[];
   searchUsers : User[];
   activeTable : number = 1;
+  keyWords : String = "";
 
   constructor(private fansService : FansService) { }
 
@@ -28,6 +29,18 @@ export class FansComponent implements OnInit {
 
   tabActive(tabNumber : number): void{
     this.activeTable = tabNumber;
+  }
+
+  onSearch(){
+    this.activeTable = 3;
+    console.log("search");
+    console.log(this.keyWords);
+    this.fansService.searchUserByKeyWord(this.keyWords).subscribe(
+      r =>{
+        this.searchUsers = r;
+        console.log(r);
+      }
+    );
   }
 
 }

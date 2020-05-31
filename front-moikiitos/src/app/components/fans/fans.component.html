@@ -1,10 +1,10 @@
 <div class="fans">
     <div class="search-box" style="display: flex; justify-content: space-between;">
       
-        <input style="align-items: flex-start; flex:8; height: 50px;" placeholder="  search by name/email"/>
+        <input [(ngModel)]="keyWords" style="align-items: flex-start; flex:8; height: 50px;" placeholder="  search by name/email"/>
      
         <div class="search-box-button" style="flex: 2;">
-            <button style="height: 50px; width: 80%;">Search</button>
+            <button (click)="onSearch()" style="height: 50px; width: 80%;">Search</button>
         </div>
     </div>
     <div class="fans-panel" style="padding-top: 40px;"> 
