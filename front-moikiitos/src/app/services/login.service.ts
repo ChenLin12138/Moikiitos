@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../classes/user';
+import { SignupForm } from '../classes/signupform';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class LoginService {
 
   currentUser : User = new User();  
   loginUrl = "http://moikiitos.com/oauth/token";
+  signupUrl = "http://moikiitos.com/v1/moikiitos/user/"
 
   constructor(private http : HttpClient
               , private jwtHelperService: JwtHelperService
@@ -40,9 +42,18 @@ export class LoginService {
         localStorage.setItem('user_name',this.currentUser.userName);
         localStorage.setItem('user_roles',JSON.stringify(this.currentUser.roles));
         return true;
-      })
-    );
+        })
+      );
+    }
+  
+  doSignup(username : string, password : string, email : string){
+    let form : SignupForm = new  SignupForm();
+    form.email = email;
+    form.password = password;
+    form.username = username;
+    return this.http.post<any>(this.signupUrl ,form);
   }
+
 
   doLogout() : void{
     localStorage.removeItem('access_token');

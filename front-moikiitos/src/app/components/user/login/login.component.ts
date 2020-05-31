@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('main');
     }
 
-
     this.loginService.doLogout();
     this.loginService.doLogin(data.name, data.password)
     .subscribe(
@@ -53,6 +52,12 @@ export class LoginComponent implements OnInit {
 
   onSignup(data) {
     console.log(data);
+    if(data.password != data.passwordConfirm){
+      return ;
+    }
+    this.loginService.doSignup(data.name, data.password, data.email).subscribe(
+      r => this.ngOnInit()
+    );
   }
 
   pageActive(page : number) {
