@@ -50,7 +50,17 @@ public class UserService implements IUserService, UserDetailsService{
 	}
 	
 	public void addUser(User user) {
+		
+		user.setEnabled(true);
+		user.setAccountNonExpired(true);
+		user.setAccountNonLocked(true);
 		mapper.insert(user);
+		
+		user = mapper.selectByUsername(user.getUsername());
+		Role role = new Role();
+		role.setId(2);
+		addRole(user, role);
+
 	}
 	
 	public List<Role> getUserRoles(User user) {

@@ -45,28 +45,9 @@ public class FollowerController {
 		UserFollowListView result = new UserFollowListView();
 		
 		List<UserFollowView> followerList = followService.getFollowersListWithNameAndEmail(user);
-//		List<UserEmail> followers = new ArrayList<UserEmail> ();
-		
-//		for(FollowRelationshipView e : followerList) {
-//			UserEmail follower = new UserEmail();
-//			follower.setUserId(e.getUserid());
-//			follower.setUserName(e.getName());
-//			follower.setEmail(e.getEmail());
-//			followers.add(follower);
-//		}
-		
 		result.setFollowerList(followerList);
 		
-		List<UserFollowView> followingList = followService.getFollowingListWithNameAndEmail(user);
-//		List<UserEmail> followings = new ArrayList<UserEmail> ();
-//		for(FollowRelationship e : followingList) {
-//			UserEmail following = new UserEmail();
-//			following.setUserId(e.getFollowid());
-//			following.setUserName(e.getName());
-//			following.setEmail(e.getEmail());
-//			followings.add(following);
-//		}
-		
+		List<UserFollowView> followingList = followService.getFollowingListWithNameAndEmail(user);		
 		result.setFollowingList(followingList);
 		result.setUserId(userid);
 		
