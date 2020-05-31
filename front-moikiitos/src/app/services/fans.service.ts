@@ -25,10 +25,9 @@ export class FansService {
     return this.http.get<any>(this.searchUserUrl+keywords,{headers : headers});
   }
 
-  unFollow(map : UserFollowView) : Observable<any>{
+  unFollow(id : Number) : Observable<any>{
     let headers : HttpHeaders = new HttpHeaders({'Authorization':localStorage.getItem('access_token')});
-    this.http.delete(this.fansUrl,{headers : headers});
-    return;
+    return this.http.delete(this.fansUrl+id,{headers : headers});
   }
 
   follow(map : UserFollowView) : Observable<any>{

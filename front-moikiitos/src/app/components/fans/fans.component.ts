@@ -42,14 +42,20 @@ export class FansComponent implements OnInit {
     );
   }
 
-  onUnFollow(followId : number){
-    // this.userFollowView.userId = Number(localStorage.getItem('user_id'));
-    // this.relationMap.followid = followId;
-    // this.fansService.unFollow(this.relationMap).subscribe(
-    //   r => {
-    //     this.ngOnInit();
-    //   }
-    // );
+  onUnFollow(userFollowId : number){
+    this.fansService.unFollow(userFollowId).subscribe(
+      r => {
+        this.ngOnInit();
+      }
+    );
   }
+
+  // onFollow(userFollowId : number){
+  //   this.fansService.unFollow(userFollowId).subscribe(
+  //     r => {
+  //       this.ngOnInit();
+  //     }
+  //   );
+  // }
 
 }
