@@ -22,7 +22,7 @@
   </select>
   <select id="selectByUserIdWithNameAndEmail" resultMap="UserFollowViewResultMap" parameterType="java.lang.Integer" >
     select 
-    f.id as id, f.userid as userId, f.followid as followId, u.username as followName, u.email as followEmail
+    <include refid="UserFollowView_Column_List" />
     from user_follow f
     inner join users u
     on followid = u.id
@@ -33,7 +33,7 @@
     <include refid="UserFollowView_Column_List" />
     from user_follow f
     inner join users u
-    on followid = u.id
+    on f.userid = u.id
     where followid = #{followid,jdbcType=INTEGER}
   </select>
   <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
