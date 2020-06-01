@@ -17,6 +17,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { MainComponent } from './components/main/main.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { FansComponent } from './components/fans/fans.component';
+import { TestComponent } from './component/test/test.component';
 
 
 registerLocaleData(zh);
@@ -33,7 +34,9 @@ export function tokenGetter() {
     MainComponent,
     ChatComponent,
     FansComponent,
+    TestComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
