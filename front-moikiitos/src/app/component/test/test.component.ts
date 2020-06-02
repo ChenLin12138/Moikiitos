@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class TestComponent implements OnInit {
 
-  validateForm!: FormGroup;
+  validateForm! : FormGroup;
 
   submitForm(): void {
     for (const i in this.validateForm.controls) {

@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
-import { zh_CN } from 'ng-zorro-antd/i18n';
+import { NgZorroAntdModule, zh_CN } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { LoginComponent } from './components/user/login/login.component';
@@ -45,6 +45,7 @@ export function tokenGetter() {
     NzMenuModule,
     FormsModule,
     HttpClientModule,
+    NgZorroAntdModule,
     BrowserAnimationsModule
     ,ReactiveFormsModule
     ,JwtModule.forRoot({
