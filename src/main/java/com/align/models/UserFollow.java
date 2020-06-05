@@ -1,6 +1,7 @@
 package com.align.models;
 
 public class UserFollow {
+	
     private Integer id;
 
     private Integer userid;

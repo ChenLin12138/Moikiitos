@@ -15,5 +15,5 @@ public interface IUserService {
 	
 	public User getUserByUsername(String username);
 	
-	public void addUser(User user);
+	public boolean addUser(User user);
 }

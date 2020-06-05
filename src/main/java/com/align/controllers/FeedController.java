@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.align.models.Feed;
+import com.align.models.RespBean;
 import com.align.models.User;
 import com.align.services.FollowService;
 import com.align.services.IFeedService;
@@ -27,7 +28,6 @@ import io.swagger.annotations.ApiOperation;
 @Api(tags="FeedController")
 @RestController
 @RequestMapping(value = "/v1/moikiitos/feeds")
-//@CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 public class FeedController {
 	
 	@Autowired
@@ -58,7 +58,13 @@ public class FeedController {
 	
 	@ApiOperation(value = "提交Feed" ,  notes="用户提交留言")
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public void postFeed(@RequestBody Feed feed) {
-		feedService.postFeed(feed);
+	public RespBean postFeed(@RequestBody Feed feed) {
+		
+		boolean success = feedService.postFeed(feed);
+		if(success) {
+			return  RespBean.ok("留言成功！");
+		}else {
+			return RespBean.error("留言失败，请重试!");
+		} 
 	}
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.align.models.FollowRelationship;
+import com.align.models.RespBean;
 import com.align.models.User;
 import com.align.models.UserFollow;
 import com.align.services.FollowService;
@@ -56,13 +57,25 @@ public class FollowerController {
 	
 	@ApiOperation(value = "添加关注" ,  notes="通过用户id组添加关注")
 	@RequestMapping(value = "/{userid}", method = RequestMethod.POST)
-	public void follow(@RequestBody UserFollow userFollow) {
-		followService.follow(userFollow);
+	public RespBean follow(@RequestBody UserFollow userFollow) {
+		boolean success = followService.follow(userFollow);
+		
+		if(success) {
+			return RespBean.ok("关注成功！");
+		}else {
+			return RespBean.ok("关注失败，请重试！");
+		}
 	}
 	
 	@ApiOperation(value = "取消关注" ,  notes="通过用户id组取消关注")
 	@RequestMapping(value = "/{userid}", method = RequestMethod.DELETE)
-	public void unfollow(@PathVariable("userid") Integer userid) {
-		followService.unfollow(userid);
+	public RespBean unfollow(@PathVariable("userid") Integer userid) {
+		boolean success = followService.unfollow(userid);
+		
+		if(success) {
+			return RespBean.ok("取消关注成功！");
+		}else {
+			return RespBean.ok("取消关注失败，请重试！");
+		}
 	}
 }

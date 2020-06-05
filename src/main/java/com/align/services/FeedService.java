@@ -29,9 +29,9 @@ public class FeedService implements IFeedService{
 	 * Post Feed
 	 * @param feed
 	 * */
-	public void postFeed(Feed feed){
+	public boolean postFeed(Feed feed){
 		
-		mapper.insert(feed);
+		return (1 == mapper.insert(feed));
 	}
 	
 	/*

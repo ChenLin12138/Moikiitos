@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.align.models.RespBean;
 import com.align.models.User;
 import com.align.models.UserEmail;
 import com.align.models.UserRequestInfo;
@@ -59,13 +60,17 @@ public class UserController {
 	
 	@ApiOperation(value = "新用户注册" ,  notes="添加新用户")
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public void addUser(@RequestBody UserRequestInfo userRequestInfo) {
+	public RespBean register(@RequestBody UserRequestInfo userRequestInfo) {
 		
 		User user = new User();
 		user.setUsername(userRequestInfo.getUsername());
 		user.setPassword(userRequestInfo.getPassword());
 		user.setEmail(userRequestInfo.getEmail());
-		userService.addUser(user);
+		if(userService.registerUser(user)) {
+			return RespBean.ok("用户添加成功!");
+		}else {
+			return RespBean.error("用户添加失败！");
+		}
 	}
 	
 }

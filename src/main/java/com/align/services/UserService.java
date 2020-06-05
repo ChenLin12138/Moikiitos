@@ -50,7 +50,7 @@ public class UserService implements IUserService, UserDetailsService{
 		return mapper.selectByUsernameLike("%"+username+"%");
 	}
 	
-	public void addUser(User user) {
+	public boolean addUser(User user) {
 		
 		user.setEnabled(true);
 		user.setAccountNonExpired(true);
@@ -60,24 +60,38 @@ public class UserService implements IUserService, UserDetailsService{
 		String password = encoder.encode(user.getPassword());
 		user.setPassword(password);
 		
-		mapper.insert(user);
+		int userInsertResult = mapper.insert(user);
+		return userInsertResult ==1;
+
+	}
+	
+	public boolean registerUser(User user) {
+		user.setEnabled(true);
+		user.setAccountNonExpired(true);
+		user.setAccountNonLocked(true);
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String password = encoder.encode(user.getPassword());
+		user.setPassword(password);
+		
+		int userInsertResult = mapper.insert(user);
 		
 		user = mapper.selectByUsername(user.getUsername());
 		Role role = new Role();
 		role.setId(2);
-		addRole(user, role);
-
+		int roleInsertResult = addRole(user, role);
+		return userInsertResult ==1 && roleInsertResult == 1;
 	}
 	
 	public List<Role> getUserRoles(User user) {
 		return userRoleMapper.selectRolesByUserId(user.getId());
 	}
 	
-	public void addRole(User user, Role role) {
+	public int addRole(User user, Role role) {
 		UserRole ur = new UserRole();
 		ur.setUserId(user.getId());
 		ur.setRoleId(role.getId());
-		userRoleMapper.insert(ur);
+		return userRoleMapper.insert(ur);
 	}
 		
 	@Override

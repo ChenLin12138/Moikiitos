@@ -37,8 +37,7 @@ public class UserServiceTest extends BaseServiceTest {
 		user0.setAccountNonExpired(true);
 		user0.setEnabled(true);
 		service.addUser(user0);
-		
-		
+			
 		Role role0 = new Role();
 		role0.setId(1);
 		Role role1 = new Role();
@@ -76,7 +75,10 @@ public class UserServiceTest extends BaseServiceTest {
 	
 		
 		List<String> actualRoles = new ArrayList<String>();
-		for(Role role :service.getUserRoles(user0)) {
+		
+		List<Role> roles = service.getUserRoles(user0);
+		
+		for(Role role : roles) {
 			actualRoles.add(role.getRole());
 		}	
 		assertThat(actualRoles, is(expectedRoles));	

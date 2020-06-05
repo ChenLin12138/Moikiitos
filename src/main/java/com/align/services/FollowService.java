@@ -22,12 +22,12 @@ public class FollowService{
 	UserFollowMapper mapper;
 	
 	
-	public void follow(UserFollow userFollow){
-		mapper.insert(userFollow);
+	public boolean follow(UserFollow userFollow){
+		return 1 == mapper.insert(userFollow);
 	}
 	
-	public void unfollow(Integer primaryKey){
-		mapper.deleteByPrimaryKey(primaryKey);
+	public boolean unfollow(Integer primaryKey){
+		return 1 == mapper.deleteByPrimaryKey(primaryKey);
 	}
 	
 	/*

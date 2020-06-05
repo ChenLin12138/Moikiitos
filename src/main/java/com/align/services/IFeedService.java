@@ -15,7 +15,7 @@ public interface IFeedService {
 	 * Post Feed
 	 * @param feed
 	 * */
-	public void postFeed(Feed feed);
+	public boolean postFeed(Feed feed);
 	
 	/*
 	 * List Feed
