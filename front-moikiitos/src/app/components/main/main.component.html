@@ -4,10 +4,10 @@
         <div><button  nz-button nzType="primary" (click)="logout()">Logout</button></div>
     </nz-header>
     <nz-layout>
-      <nz-sider style="background-color: white; color: black;">
+      <nz-sider style="background-color: white; color: black; padding : 5% 0% 5% 1%; min-width: 18%;">
         <p>{{userFeed.userName}}</p>
         <nz-divider></nz-divider>
-        <ul nz-menu nzMode="inline" style="width: 100%">
+        <ul nz-menu nzMode="inline" style="width: 100%;">
             <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"></ng-container>
             <ng-template #menuTpl let-menus>
               <ng-container *ngFor="let menu of menus">
@@ -38,7 +38,7 @@
             </ng-template>
           </ul>
       </nz-sider>
-      <nz-content style="background-color: white; color: black; padding : 0% 5% 0% 5%"><router-outlet></router-outlet></nz-content>
+      <nz-content style="background-color: white; color: black; padding : 5% 5% 5% 5%; line-height: 300%;"><router-outlet></router-outlet></nz-content>
     </nz-layout>
     <nz-footer>Powered By Chen Lin</nz-footer>
   </nz-layout>
