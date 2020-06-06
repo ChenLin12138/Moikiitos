@@ -1,4 +1,49 @@
-<div class="main-frame">
+<nz-layout>
+    <nz-header style="display:flex; justify-content:space-between;">
+        <div><h1>Moi Kittos</h1></div>
+        <div><button  nz-button nzType="primary" (click)="logout()">Logout</button></div>
+    </nz-header>
+    <nz-layout>
+      <nz-sider style="background-color: white; color: black;">
+        <p>{{userFeed.userName}}</p>
+        <nz-divider></nz-divider>
+        <ul nz-menu nzMode="inline" style="width: 100%">
+            <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"></ng-container>
+            <ng-template #menuTpl let-menus>
+              <ng-container *ngFor="let menu of menus">
+                <li
+                  *ngIf="!menu.children"
+                  nz-menu-item
+                  [nzPaddingLeft]="menu.level * 24"
+                  [nzDisabled]="menu.disabled"
+                  [nzSelected]="menu.selected"
+                >
+                  <i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
+                  <span>{{ menu.title }}</span>
+                </li>
+                <li
+                  *ngIf="menu.children"
+                  nz-submenu
+                  [nzPaddingLeft]="menu.level * 24"
+                  [nzOpen]="menu.open"
+                  [nzTitle]="menu.title"
+                  [nzIcon]="menu.icon"
+                  [nzDisabled]="menu.disabled"
+                >
+                  <ul>
+                    <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menu.children }"></ng-container>
+                  </ul>
+                </li>
+              </ng-container>
+            </ng-template>
+          </ul>
+      </nz-sider>
+      <nz-content style="background-color: white; color: black; padding : 0% 5% 0% 5%"><router-outlet></router-outlet></nz-content>
+    </nz-layout>
+    <nz-footer>Powered By Chen Lin</nz-footer>
+  </nz-layout>
+
+<!-- <div class="main-frame">
    
     <div class="homeHeader">
             <div class="title">Moi Kiitos</div>
@@ -21,4 +66,4 @@
             <router-outlet></router-outlet>
         </div>
     </div>
-</div>
+</div> -->

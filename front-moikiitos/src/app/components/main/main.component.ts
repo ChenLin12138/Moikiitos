@@ -11,6 +11,52 @@ import { UserFeed } from '../../classes/userfeed';
 })
 export class MainComponent implements OnInit {
 
+  mode = false;
+  dark = false;
+  menus = [
+    {
+      level: 1,
+      title: 'Follow Group',
+      icon: 'team',
+      open: false,
+      selected: false,
+      disabled: false,
+      children: [
+        {
+          level: 2,
+          title: 'Following',
+          icon: 'user',
+          selected: false,
+          disabled: false
+        },
+        {
+          level: 2,
+          title: 'Follower',
+          icon: 'user',
+          selected: false,
+          disabled: false
+        }
+      ]
+    },
+    {
+      level: 1,
+      title: 'Chat Group',
+      icon: 'mail',
+      open: false,
+      selected: false,
+      disabled: false,
+      children: [
+        {
+          level: 2,
+          title: 'Chat',
+          icon: 'message',
+          selected: false,
+          disabled: false
+        }
+      ]
+    }
+  ];
+
   constructor(private loginService : LoginService
     ,private router : Router
     ,private feedService : FeedService 
@@ -24,8 +70,8 @@ export class MainComponent implements OnInit {
     this.feedService.getFeeds(Number(localStorage.getItem('user_id'))).subscribe(
       result => {
         this.userFeed.userName = result.userName;
-        this.userFeed.followingCount = result.followingCount;
-        this.userFeed.followersCount = result.followersCount;
+        this.menus[0].children[0].title = "Following "+result.followingCount
+        this.menus[0].children[1].title = "Follower "+result.followersCount
       }
     );
   }
