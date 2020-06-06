@@ -34,22 +34,17 @@
     margin: 0;
   }
 
-
-/* loginform */
-  .login-form {
+/* regform */
+[nz-form] {
     width: 100%;
-    padding: 13% 35% 13% 35%;
+    padding: 13% 27% 13% 27%;
     background-color: white;
   }
 
-  .login-form-margin {
-    margin-bottom: 16px;
+  .phone-select {
+    width: 70px;
   }
 
-  .login-form-forgot {
-    float: right;
-  }
-
-  .login-form-button {
-    width: 100%;
+  .register-are {
+    margin-bottom: 8px;
   }
