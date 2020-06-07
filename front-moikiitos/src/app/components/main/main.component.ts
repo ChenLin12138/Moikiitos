@@ -11,6 +11,8 @@ import { UserFeed } from '../../classes/userfeed';
 })
 export class MainComponent implements OnInit {
 
+  selected : boolean = false;
+
   mode = false;
   dark = false;
   menus = [
@@ -80,5 +82,14 @@ export class MainComponent implements OnInit {
     this.loginService.doLogout();
     this.router.navigateByUrl('user/login');
   }
+
+  onMenuClick(title : string) {
+
+    if(title.startsWith('Following')||title.startsWith('Follower')){
+      this.router.navigateByUrl('main/fans');
+    }else{
+      this.router.navigateByUrl('main/'+title.toLowerCase());
+    }
+  }  
 
 }

@@ -3,13 +3,15 @@
     justify-content: center;
     align-items: center; 
     border-style: solid; 
-    border-width: 2px; 
+    border-width: 1px; 
+    border-color: rgb(217, 217, 217);
     margin-bottom: 20px;
 }
 
 .chatContent .speaker{
     flex: 1; 
-    border: 2px; 
+    border-width: 1px; 
+    border-color: rgb(217, 217, 217);
     border-right-style: solid;  
     padding : 5px 20px 5px 20px; 
     text-align: center;

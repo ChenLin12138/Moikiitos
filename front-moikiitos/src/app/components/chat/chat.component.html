@@ -1,11 +1,11 @@
 <div class="chatMain">
     <div class="postField">
         <form [formGroup]="chatForm" (ngSubmit)="onSubmit(chatForm.value)">
-            <div>
+            <div style="margin-bottom: 2%;">
               <!-- <textarea id="content" class="dailogPost" type="text" formControlName ="content" placeholder="  Type something here..."></textarea> -->
               <textarea nz-input placeholder="  Type something here..." formControlName ="content" [nzAutosize]="{ minRows: 3, maxRows: 5 }"></textarea>
             </div>
-            <button  nz-button nzType="primary">Post</button>
+            <button nz-button nzType="primary">Post</button>
           </form>
     </div>
 

@@ -11,6 +11,8 @@ import { UserFollow } from 'src/app/classes/userfollow';
 })
 export class FansComponent implements OnInit {
 
+  tabIndex : number = 0;
+
   followings : UserFollowView[];
   followers : UserFollowView[];
   userFollow : UserFollow = new UserFollow();
@@ -18,14 +20,31 @@ export class FansComponent implements OnInit {
   activeTable : number = 1;
   keyWords : String = "";
 
+  tabs = [
+    {
+    "tabname" : "Following"
+    ,"list" : [""]
+    }
+    ,{
+      "tabname" : "Followers"
+      ,"list" : [""]
+    }
+    ,{
+      "tabname" : "Search"
+      ,"list" : [""] 
+    }
+  ]
+
   constructor(private fansService : FansService) { }
 
   ngOnInit(): void {
-    this.activeTable = 1;
+    // this.activeTable = 1;
     this.fansService.getRelationShip(Number(localStorage.getItem('user_id'))).subscribe(
       r => {
-        this.followings = r.followingList;
-        this.followers = r.followerList;
+        // this.followings = r.followingList;
+        this.tabs[0].list = r.followingList;
+        // this.followers = r.followerList;
+        this.tabs[1].list = r.followerList;
       }
     );
   }
@@ -35,10 +54,13 @@ export class FansComponent implements OnInit {
   }
 
   onSearch(){
-    this.activeTable = 3;
+    // this.activeTable = 3;
     this.fansService.searchUserByKeyWord(this.keyWords).subscribe(
       r =>{
-        this.searchUsers = r;
+        // this.searchUsers = r;
+        this.tabIndex = 2;
+        this.tabs[2].list = r;
+        console.log(this.tabs[2].list);
       }
     );
   }

@@ -5,7 +5,7 @@
     </nz-header>
     <nz-layout>
       <nz-sider style="background-color: white; color: black; padding : 5% 0% 5% 1%; min-width: 18%;">
-        <p>{{userFeed.userName}}</p>
+        <h2>{{userFeed.userName}}</h2>
         <nz-divider></nz-divider>
         <ul nz-menu nzMode="inline" style="width: 100%;">
             <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"></ng-container>
@@ -20,6 +20,7 @@
                 >
                   <i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
                   <span>{{ menu.title }}</span>
+                  <a (click)="onMenuClick(menu.title)"></a>
                 </li>
                 <li
                   *ngIf="menu.children"
