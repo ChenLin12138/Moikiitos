@@ -12,12 +12,6 @@ import { UserFollow } from 'src/app/classes/userfollow';
 export class FansComponent implements OnInit {
 
   tabIndex : number = 0;
-
-  followings : UserFollowView[];
-  followers : UserFollowView[];
-  userFollow : UserFollow = new UserFollow();
-  searchUsers : User[];
-  activeTable : number = 1;
   keyWords : String = "";
 
   tabs = [
@@ -49,15 +43,9 @@ export class FansComponent implements OnInit {
     );
   }
 
-  tabActive(tabNumber : number): void{
-    this.activeTable = tabNumber;
-  }
-
   onSearch(){
-    // this.activeTable = 3;
     this.fansService.searchUserByKeyWord(this.keyWords).subscribe(
       r =>{
-        // this.searchUsers = r;
         this.tabIndex = 2;
         this.tabs[2].list = r;
         console.log(this.tabs[2].list);
