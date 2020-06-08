@@ -1,7 +1,7 @@
 <nz-layout>
     <nz-header style="display:flex; justify-content:space-between;">
         <div><h1>Moi Kittos</h1></div>
-        <div><button  nz-button nzType="primary" (click)="logout()">Logout</button></div>
+        <div><button nz-button nzSize="large" nzType="primary" (click)="logout()">Logout</button></div>
     </nz-header>
     <nz-layout>
       <nz-sider style="background-color: white; color: black; padding : 5% 0% 5% 1%; min-width: 18%;">
@@ -43,28 +43,3 @@
     </nz-layout>
     <nz-footer>Powered By Chen Lin</nz-footer>
   </nz-layout>
-
-<!-- <div class="main-frame">
-   
-    <div class="homeHeader">
-            <div class="title">Moi Kiitos</div>
-            <div class="homeButton"><button (click)="logout()">Logout</button></div>
-    </div>
-   
-    <div class="el-container">
-        <div class ="el-nav-bar">
-            <div class="el-aside">    
-                <div class="name">
-                    {{userFeed.userName}}
-                </div>
-                <div class="link">
-                    <div class="linkItem"><a routerLink="fans">Following {{userFeed.followingCount}}</a></div>
-                    <div class="linkItem"><a routerLink="fans">Followers {{userFeed.followersCount}}</a></div>  
-                </div>
-            </div>
-        </div>
-        <div class="el-content">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
-</div> -->

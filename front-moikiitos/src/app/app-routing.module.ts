@@ -5,7 +5,7 @@ import { MainComponent } from './components/main/main.component';
 import { AuthGuard } from './auth.guard';
 import { ChatComponent } from './components/chat/chat.component';
 import { FansComponent } from './components/fans/fans.component';
-import { RegisterComponent } from './user/register/register.component';
+import { RegisterComponent } from './components/user/register/register.component';
 
 
 const routes: Routes = [

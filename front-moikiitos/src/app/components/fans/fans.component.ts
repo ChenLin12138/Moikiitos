@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FansService } from 'src/app/services/fans.service';
-import { User } from '../../classes/user';
-import { UserFollowView } from 'src/app/classes/userfollowview';
 import { UserFollow } from 'src/app/classes/userfollow';
 
 @Component({

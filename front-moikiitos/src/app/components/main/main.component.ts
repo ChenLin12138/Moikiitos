@@ -78,6 +78,10 @@ export class MainComponent implements OnInit {
     );
   }
 
+  test(){
+    console.log("Test");
+  }
+
   logout(){
     this.loginService.doLogout();
     this.router.navigateByUrl('user/login');
