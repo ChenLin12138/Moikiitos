@@ -8,7 +8,7 @@
         </ng-template>  
     </div>
 
-    <nz-tabset style="padding-top: 6%;" [nzTabPosition]="'top'" [nzType]="'card'" [nzSelectedIndex]=tabIndex >
+    <nz-tabset style="width: 100%;" [nzTabPosition]="'top'" [nzType]="'card'" [nzSelectedIndex]=tabIndex >
         <nz-tab *ngFor="let tab of tabs" [nzTitle]="tab.tabname">  
             <div [hidden]="'Following'!=tab.tabname">
                 <div class="chatContent" *ngFor="let item of tabs[0].list">
