@@ -18,6 +18,9 @@ import { MainComponent } from './components/main/main.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { FansComponent } from './components/fans/fans.component';
 import { RegisterComponent } from './components/user/register/register.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { TestComponent } from './components/test/test.component';
 
 
 registerLocaleData(zh);
@@ -35,6 +38,9 @@ export function tokenGetter() {
     ChatComponent,
     FansComponent,
     RegisterComponent,
+    DashboardComponent,
+    BreadcrumbComponent,
+    TestComponent,
   ],
 
   imports: [
