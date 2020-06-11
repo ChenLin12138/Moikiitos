@@ -41,10 +41,6 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	@Autowired
 	UserService userService;
 	
-	@Value("${security.enable-csrf}")
-	private boolean csrfEnabled;
-	
-	
 	@Override
 	@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
 	public AuthenticationManager authenticationManagerBean() throws Exception{
