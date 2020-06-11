@@ -27,7 +27,10 @@ import com.align.services.UserService;
  * 暂时采用内存数据库的方式配置用户名，密码，角色
  * */
 
-//跨域的问题一直没解决，是因为没有用这个order放置filter的位置
+//在我们的项目中，有spring mvc, security, oauth方式
+//Spring Security 本身是通过 Filter 实现的，如果没有对其单独做 CORS 的处理，
+//在 Web Security 报错 401 的时候是不会返回相应的 CORS 的字段的。这会导致出现的 401 
+//错误成为了一个无法进行跨域的错误，导致前端程序无法正常的处理 401响应
 @Order(Ordered.HIGHEST_PRECEDENCE)
 //扩展核心的Spring Security的WebSecurityConfigurerAdapter
 @Configuration
