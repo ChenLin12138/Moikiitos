@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { User } from '../classes/user';
-import { UserFollowView } from 'src/app/classes/userfollowview';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserFollow } from '../classes/userfollow';
 
 
