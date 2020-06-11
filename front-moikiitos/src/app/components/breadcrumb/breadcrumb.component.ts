@@ -26,12 +26,19 @@ export class BreadcrumbComponent implements OnInit {
 
   ngOnInit(): void {
     // 订阅NavigationEnd事件
+
+    if(event == undefined && null != sessionStorage.getItem('breadcrumbList')){
+      console.log(sessionStorage.getItem('breadcrumbList'));
+      this.breadcrumbs = JSON.parse(sessionStorage.getItem('breadcrumbList'));
+    }
+
     this.router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(event => {
         // 设置面包屑
         const root: ActivatedRoute = this.activatedRoute.root;
         console.log('=== janine.树的的根路由', root);
         this.breadcrumbs = this.getBreadcrumbs(root);
+        sessionStorage.setItem('breadcrumbList', JSON.stringify(this.breadcrumbs));
       });
   }
 
