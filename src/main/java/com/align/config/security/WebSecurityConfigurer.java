@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -24,6 +27,8 @@ import com.align.services.UserService;
  * 暂时采用内存数据库的方式配置用户名，密码，角色
  * */
 
+//跨域的问题一直没解决，是因为没有用这个order放置filter的位置
+@Order(Ordered.HIGHEST_PRECEDENCE)
 //扩展核心的Spring Security的WebSecurityConfigurerAdapter
 @Configuration
 //显示添加注解@EnableWebSecurity，不然junit会找不到一些关于spring security的依赖。
@@ -61,16 +66,13 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
 		auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
-	//打开这个配置，他就送我这个错误
-	//Consider defining a bean named 'mvcHandlerMappingIntrospector'
-	//添加一下逻辑，想允许cors,但是没有作用
-//	@Override
-//	protected void configure(HttpSecurity http) throws Exception {
-//		super.configure(http);
-//		
-//		if(!csrfEnabled) {
-//			http.cors().and()
-//			.csrf().disable();
-//		}
-//	}
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+        http
+        .requestMatchers().antMatchers(HttpMethod.OPTIONS, "/oauth/**")
+        .and()
+        .csrf().disable().formLogin()
+        .and()
+        .cors();
+    }
 }

@@ -1,0 +1,49 @@
+##
+##cat /usr/local/etc/nginx/conf.d/moikiitos.conf
+server {
+    listen       80;
+    error_log  /Users/zdm/Desktop/moikiitos.error_log debug;
+    server_name  moikiitos.com;
+    # 这里需要改成你本地的前端代码目录
+    root /Users/zdm/eclipse-workspace/MoiKiitos/front-moikiitos/;
+    index index.html;
+
+    location / {
+       #try_files $uri $uri/ /index.html;
+	proxy_pass http://localhost:9513/;
+    }
+
+    location /v1/moikiitos/ {
+        add_header From moikiitos;
+        proxy_pass http://localhost:8513/v1/moikiitos/;
+      # proxy_set_header X-Forwarded-Proto $scheme;
+      # proxy_set_header X-Forwarded-Port $server_port;
+      #  proxy_set_header Remote_Addr $remote_addr;
+      #  proxy_set_header Host $host;
+      #  proxy_set_header X-Real-IP $remote_addr;
+      #  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      #  proxy_set_header Cookie $http_cookie;
+      #  proxy_redirect default;
+      #  proxy_buffering off;
+      #  proxy_cookie_path ~*^/.* /;
+      #  proxy_intercept_errors on;
+    }
+
+    location =  /oauth/token {
+	add_header From moikiitos;
+        proxy_pass http://localhost:8513/oauth/token;
+    }
+
+    location /sockjs-node/ {
+            proxy_set_header Host "localhost";
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_http_version 1.1;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_pass http://localhost:9513;
+    }
+
+    #location ~ \.(html|js|css|png|jpg|jpeg|gif|ico|json|woff2|eot|ttf|svg|woff)$ {
+        # 这里需要改成你本地的前端代码目录
+    #    root /Users/zdm/eclipse-workspace/MoiKiitos/front-moikiitos/;
+    #}
