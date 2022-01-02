@@ -1,9 +1,14 @@
 package com.align.config.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.access.AccessDecisionManager;
+import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
 /**
  * @author Chen Lin
@@ -17,6 +22,14 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 @Configuration
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 	
+	//自定义url可以访问的类
+	@Autowired
+	FilterInvocationSecurityMetadataSource customFilterInvocationSecurityMetadataSource;
+	
+	//DecisionManager
+	@Autowired
+	AccessDecisionManager customUrlDecisionManager;
+	
 	@Override
 	public void configure (HttpSecurity http) throws Exception {
 		
@@ -27,6 +40,16 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 		.and()
 		.authorizeRequests().antMatchers(HttpMethod.POST,"/v1/moikiitos/user/").permitAll()
 		.and()
-		.authorizeRequests().antMatchers(HttpMethod.POST,"/v1/moikiitos/**").authenticated();		
+		.authorizeRequests().antMatchers(HttpMethod.POST,"/v1/moikiitos/**").authenticated()
+		.and()
+		.authorizeRequests()
+		.withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
+          @Override
+          public <O extends FilterSecurityInterceptor> O postProcess(O object) {
+        	  object.setAccessDecisionManager(customUrlDecisionManager);
+              object.setSecurityMetadataSource(customFilterInvocationSecurityMetadataSource);
+              return object;
+          }
+      });		
 	}
 }

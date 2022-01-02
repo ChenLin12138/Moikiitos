@@ -40,6 +40,10 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	@Autowired
 	UserService userService;
 	
+	//自定义url可以访问的类
+//	@Autowired
+//    CustomFilterInvocationSecurityMetadataSource customFilterInvocationSecurityMetadataSource;
+	
 	@Override
 	@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
 	public AuthenticationManager authenticationManagerBean() throws Exception{
@@ -54,13 +58,6 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication().withUser("chenlin")
-//		.password(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("password1"))
-//		.roles("USERS")
-//		.and()
-//		.withUser("zdm")
-//		.password(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("password2"))
-//		.roles("USERS","ADMIN");
 		auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
@@ -71,6 +68,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
         .and()
         .csrf().disable().formLogin()
         .and()
-        .cors();
+        .cors()
+        ;
     }
 }
