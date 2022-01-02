@@ -9,11 +9,11 @@ import { Feed } from '../classes/feed';
 })
 export class FeedService {
 
-  // feedUrl : string = "http://moikiitos.com/v1/moikiitos/feeds/";
-  // feedPostUrl : string =  "http://moikiitos.com/v1/moikiitos/feeds/";
+  feedUrl : string = "http://moikiitos.com/v1/moikiitos/feeds/";
+  feedPostUrl : string =  "http://moikiitos.com/v1/moikiitos/feeds/";
 
-  feedUrl : string = "http://localhost:8513/v1/moikiitos/feeds/";
-  feedPostUrl : string =  "http://localhost:8513/v1/moikiitos/feeds/";
+  // feedUrl : string = "http://localhost:8513/v1/moikiitos/feeds/";
+  // feedPostUrl : string =  "http://localhost:8513/v1/moikiitos/feeds/";
 
   constructor(
    private http: HttpClient

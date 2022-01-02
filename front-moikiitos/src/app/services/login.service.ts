@@ -12,11 +12,11 @@ import { SignupForm } from '../classes/signupform';
 export class LoginService {
 
   currentUser : User = new User();  
-  // loginUrl = "http://moikiitos.com/oauth/token";
-  // signupUrl = "http://moikiitos.com/v1/moikiitos/user/"
+  loginUrl = "http://moikiitos.com/oauth/token";
+  signupUrl = "http://moikiitos.com/v1/moikiitos/user/"
 
-  loginUrl = "http://localhost:8513/oauth/token";
-  signupUrl = "http://localhost:8513/v1/moikiitos/user/"
+  // loginUrl = "http://localhost:8513/oauth/token";
+  // signupUrl = "http://localhost:8513/v1/moikiitos/user/"
 
   constructor(private http : HttpClient
               , private jwtHelperService: JwtHelperService
