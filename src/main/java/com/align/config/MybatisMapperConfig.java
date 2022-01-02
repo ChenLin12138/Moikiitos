@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Configuration;
 
 import com.align.dao.mappers.FeedMapper;
 import com.align.dao.mappers.FollowRelationshipMapper;
+import com.align.dao.mappers.MenuMapper;
+import com.align.dao.mappers.UserFollowMapper;
 import com.align.dao.mappers.UserMapper;
 
 /**
@@ -39,22 +41,29 @@ public class MybatisMapperConfig {
 	
 	@Bean
 	public FeedMapper feedMapper() throws Exception {
-
 		return sqlSessionTemplate().getMapper(FeedMapper.class);
-
 	}
 	
 	@Bean
 	public FollowRelationshipMapper followRelationshipMapper() throws Exception {
-
 		return sqlSessionTemplate().getMapper(FollowRelationshipMapper.class);
-
 	}
 	
 	@Bean
-	public UserMapper usersMapper() throws Exception {
-
+	public UserMapper userMapper() throws Exception {
 		return sqlSessionTemplate().getMapper(UserMapper.class);
-
 	}
+	
+	@Bean
+	public MenuMapper menuMapper() throws Exception {
+		return sqlSessionTemplate().getMapper(MenuMapper.class);
+	}
+	
+	
+	@Bean
+	public UserFollowMapper userFollowMapper() throws Exception {
+		return sqlSessionTemplate().getMapper(UserFollowMapper.class);
+	}
+	
+	
 }

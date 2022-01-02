@@ -45,11 +45,11 @@
             enableDeleteByExample="false" enableSelectByExample="false"
             selectByExampleQueryId="false">   
        </table>     -->       
-       <table tableName="user_follow" domainObjectName="UserFollow"
+    <!--    <table tableName="user_follow" domainObjectName="UserFollow"
        		enableCountByExample="false" enableUpdateByExample="false"
             enableDeleteByExample="false" enableSelectByExample="false"
             selectByExampleQueryId="false">   
-       </table>                  
+       </table>      -->             
    <!--     
       <table tableName="users" domainObjectName="User"
        		enableCountByExample="false" enableUpdateByExample="false"
@@ -67,7 +67,19 @@
        		enableCountByExample="false" enableUpdateByExample="false"
             enableDeleteByExample="false" enableSelectByExample="false"
             selectByExampleQueryId="false">   
-       </table>   -->       
+       </table>   -->     
+  <!--        
+     <table tableName="menu" domainObjectName="Menu"
+       		enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false"
+            selectByExampleQueryId="false">   
+     </table>
+     
+     <table tableName="menu_role" domainObjectName="MenuRole"
+       		enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false"
+            selectByExampleQueryId="false">   
+     </table>  -->
        
     </context>
 </generatorConfiguration>

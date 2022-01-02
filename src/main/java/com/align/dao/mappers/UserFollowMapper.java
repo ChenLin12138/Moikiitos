@@ -11,7 +11,8 @@ import com.align.view.UserFollowView;
 @Primary
 @Mapper
 public interface UserFollowMapper {
-    int deleteByPrimaryKey(Integer id);
+    
+	int deleteByPrimaryKey(Integer id);
 
     int insert(UserFollow record);
 

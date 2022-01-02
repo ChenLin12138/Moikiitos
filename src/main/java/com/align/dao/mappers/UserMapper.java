@@ -10,6 +10,7 @@ import com.align.models.User;
 @Primary
 @Mapper
 public interface UserMapper {
+	
     int deleteByPrimaryKey(Integer id);
 
     int insert(User record);

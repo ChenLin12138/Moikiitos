@@ -11,7 +11,8 @@ import com.align.models.UserRole;
 @Primary
 @Mapper
 public interface UserRoleMapper {
-    int deleteByPrimaryKey(Integer id);
+   
+	int deleteByPrimaryKey(Integer id);
 
     int insert(UserRole record);
 

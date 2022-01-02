@@ -29,12 +29,14 @@
     delete from user_role
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  
   <insert id="insert" parameterType="com.align.models.UserRole" >
     insert into user_role (id, user_id, role_id
       )
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}
       )
   </insert>
+  
   <insert id="insertSelective" parameterType="com.align.models.UserRole" >
     insert into user_role
     <trim prefix="(" suffix=")" suffixOverrides="," >

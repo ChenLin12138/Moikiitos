@@ -50,6 +50,7 @@
     delete from users
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  
   <insert id="insert" parameterType="com.align.models.User" >
     insert into users (id, username, email, 
       password, accountNonLocked, accountNonExpired, 
@@ -58,6 +59,7 @@
       #{password,jdbcType=VARCHAR}, #{accountnonlocked,jdbcType=BIT}, #{accountnonexpired,jdbcType=BIT}, 
       #{enabled,jdbcType=BIT})
   </insert>
+  
   <insert id="insertSelective" parameterType="com.align.models.User" >
     insert into users
     <trim prefix="(" suffix=")" suffixOverrides="," >
