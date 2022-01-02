@@ -143,7 +143,13 @@
 			   <directory>${basedir}/src/main/java</directory>  
                <includes>  
                    <include>**/*.xml</include>  
-               </includes>
+               </includes>             
+			</resource>
+			<resource>
+			   <directory>${basedir}/src/main/resources</directory>  
+               <includes>  
+                   <include>*.properties</include>  
+               </includes>             
 			</resource>
 		</resources>
 	</build>
