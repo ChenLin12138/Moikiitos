@@ -18,6 +18,8 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
 /*
  * 继承ResourceServerConfigurerAdapter表达那些资源会被什么样的角色
  * 配置被保护的信息
+ * ResourceServerConfigurerAdapter这个类是拿来给OA2用的
+ * 
  * */
 @Configuration
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
