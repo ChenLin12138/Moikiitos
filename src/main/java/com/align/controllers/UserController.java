@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.align.models.Menu;
 import com.align.models.RespBean;
 import com.align.models.User;
 import com.align.models.UserEmail;
 import com.align.models.UserRequestInfo;
+import com.align.services.MenuService;
 import com.align.services.UserService;
 
 import io.swagger.annotations.Api;
@@ -31,6 +33,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private MenuService menuService;
 	
 	@ApiOperation(value = "根据keywords查找用户" ,  notes="keywords用户模糊匹配用户名和用户邮箱")
 	@RequestMapping(value = "/keyword/{keyword}", method = RequestMethod.GET)
@@ -57,6 +62,14 @@ public class UserController {
 		}
 		return result;
 	}
+	
+	
+	@ApiOperation(value = "查询用户可以访问的目录" ,  notes="根据userId查询用户可以访问的目录")
+	@RequestMapping(value = "/{userId}/menu", method = RequestMethod.GET)
+	public List<Menu> getMenus(@PathVariable("userId") Integer userId) {	
+		return menuService.getAllMenusByUserId(userId);
+	}
+	
 	
 	@ApiOperation(value = "新用户注册" ,  notes="添加新用户")
 	@RequestMapping(value = "/", method = RequestMethod.POST)

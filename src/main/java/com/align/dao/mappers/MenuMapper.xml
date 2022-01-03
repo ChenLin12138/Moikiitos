@@ -39,6 +39,15 @@
 	inner join role r on mr.rid = r.id
   </select>
   
+  <select id="getAllMenusByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+	select m.* from users u 
+	inner join user_role ur on u.id = ur.user_id
+	inner join menu_role mr on ur.role_id = mr.rid
+	inner join menu m on mr.mid = m.id 
+	where u.id = #{userId,jdbcType=INTEGER}
+  </select>
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from menu
     where id = #{id,jdbcType=INTEGER}

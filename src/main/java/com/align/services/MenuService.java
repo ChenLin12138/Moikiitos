@@ -24,4 +24,8 @@ public class MenuService {
 		return mapper.getAllMenusWithRole();
 	}
 	
+	public List<Menu> getAllMenusByUserId(Integer userId){
+		return mapper.getAllMenusByUserId(userId);
+	}
+	
 }

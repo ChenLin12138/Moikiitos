@@ -27,9 +27,15 @@ public class MenuServiceTest extends BaseServiceTest {
 	}
 	
 	@Test
-	public void getAllMenusWithRole() {
+	public void getAllMenusWithRoleTest() {
 		List<Menu> menus = service.getAllMenusWithRole();
 		Assert.assertTrue(menus.size()==2);
+	}
+	
+	@Test 
+	public void getAllMenusByUserIdTest() {
+		List<Menu> menus = service.getAllMenusByUserId(4);
+		Assert.assertTrue(menus.size()==1);
 	}
 	
 }
