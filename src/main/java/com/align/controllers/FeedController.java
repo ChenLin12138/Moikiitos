@@ -52,6 +52,7 @@ public class FeedController {
 		result.setFollowingCount(followService.countFollowing(user));
 		
 		String username = userService.getUserById(userid).getUsername();
+		result.setUserId(userid);
 		result.setUserName(username);
 		return result;
 	}

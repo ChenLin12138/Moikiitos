@@ -10,12 +10,20 @@ import com.align.models.Feed;
  */
 
 public class FeedView {
-
+	
+	private Integer userId;
 	private String userName;
 	private Integer followingCount;
 	private Integer followersCount;
 	private List<Feed> feeds;
 	
+
+	public Integer getUserId() {
+		return userId;
+	}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 	public String getUserName() {
 		return userName;
 	}
