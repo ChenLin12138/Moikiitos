@@ -12,9 +12,6 @@ export class FansService {
   fansUrl : string =  "http://moikiitos.com/v1/moikiitos/follow/";
   searchUserUrl : string =  "http://moikiitos.com/v1/moikiitos/user/keyword/";
 
-  // fansUrl : string =  "http://localhost:8513/v1/moikiitos/follow/";
-  // searchUserUrl : string =  "http://localhost:8513/v1/moikiitos/user/keyword/";
-
   constructor(private http : HttpClient) { }
 
   getRelationShip(userId : Number) : Observable<any>{

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { FeedService } from 'src/app/services/feed.service';
+import { MenuService } from 'src/app/services/menu.service';
 import { UserFeed } from '../../classes/userfeed'; 
 
 @Component({
@@ -56,12 +57,37 @@ export class MainComponent implements OnInit {
           disabled: false
         }
       ]
-    }
+    },
+    {
+      level: 1,
+      title: 'Oper Group',
+      icon: 'appstore',
+      open: false,
+      selected: false,
+      disabled: false,
+      children: [
+        {
+          level: 2,
+          title: 'oper1',
+          icon: '',
+          selected: false,
+          disabled: false
+        },
+        {
+          level: 2,
+          title: 'oper2',
+          icon: '',
+          selected: false,
+          disabled: false
+        }
+      ]
+    },
   ];
 
   constructor(private loginService : LoginService
     ,private router : Router
     ,private feedService : FeedService 
+    ,private menuService : MenuService
     ) { }
 
   userFeed : UserFeed = new UserFeed();
@@ -69,11 +95,25 @@ export class MainComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     this.feedService.getFeeds(Number(localStorage.getItem('user_id'))).subscribe(
       result => {
         this.userFeed.userName = result.userName;
         this.menus[0].children[0].title = "Following "+result.followingCount
         this.menus[0].children[1].title = "Follower "+result.followersCount
+      }
+    );
+  
+    this.menuService.getMenusByUserId(Number(localStorage.getItem('user_id'))).subscribe(
+      result => {
+        console.log(result);
+        console.log(result.length);
+        for(var i = 0; i < result.length ; i ++){
+          console.log(i);
+          console.log(result[i]);
+          console.log(result[i].name);
+          this.menus[2].children[i].title = result[i].name;
+        }
       }
     );
   }

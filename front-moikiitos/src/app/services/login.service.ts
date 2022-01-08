@@ -15,9 +15,6 @@ export class LoginService {
   loginUrl = "http://moikiitos.com/oauth/token";
   signupUrl = "http://moikiitos.com/v1/moikiitos/user/"
 
-  // loginUrl = "http://localhost:8513/oauth/token";
-  // signupUrl = "http://localhost:8513/v1/moikiitos/user/"
-
   constructor(private http : HttpClient
               , private jwtHelperService: JwtHelperService
               ) { }
