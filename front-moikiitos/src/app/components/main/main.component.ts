@@ -16,6 +16,15 @@ export class MainComponent implements OnInit {
 
   mode = false;
   dark = false;
+  
+  childrenMenu = {
+    level : 2,
+    title: 'oper1',
+    icon: '',
+    selected: false,
+    disabled: false
+  }
+
   menus = [
     {
       level: 1,
@@ -65,22 +74,7 @@ export class MainComponent implements OnInit {
       open: false,
       selected: false,
       disabled: false,
-      children: [
-        {
-          level: 2,
-          title: 'oper1',
-          icon: '',
-          selected: false,
-          disabled: false
-        },
-        {
-          level: 2,
-          title: 'oper2',
-          icon: '',
-          selected: false,
-          disabled: false
-        }
-      ]
+      children: []
     },
   ];
 
@@ -106,13 +100,9 @@ export class MainComponent implements OnInit {
   
     this.menuService.getMenusByUserId(Number(localStorage.getItem('user_id'))).subscribe(
       result => {
-        console.log(result);
-        console.log(result.length);
         for(var i = 0; i < result.length ; i ++){
-          console.log(i);
-          console.log(result[i]);
-          console.log(result[i].name);
-          this.menus[2].children[i].title = result[i].name;
+          this.childrenMenu.title = result[i].name;
+          this.menus[2].children.push(this.childrenMenu);    
         }
       }
     );
