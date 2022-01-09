@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TrainService } from 'src/app/services/train.service';
 
 @Component({
   selector: 'app-train',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrainComponent implements OnInit {
 
-  constructor() { }
+  info : string ;
+
+  constructor(private trainService : TrainService) {}
 
   ngOnInit(): void {
+    this.trainService.getTrainInfo().subscribe(
+      result => {
+        this.info =  result.info;
+      }
+    );
   }
 
 }

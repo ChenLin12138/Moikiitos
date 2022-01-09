@@ -96,6 +96,10 @@ export class MainComponent implements OnInit {
         for(var i = 0; i < result.length ; i ++){
           console.log("path is="+result[i].path);
           var cm : ChildrenMenu = new ChildrenMenu();
+          cm.level = 2;
+          cm.icon = "";
+          cm.disabled = false;
+          cm.selected = false;
           cm.title = result[i].path;
           this.menus[2].children.push(cm);    
         }

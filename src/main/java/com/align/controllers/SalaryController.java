@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.align.view.InfoView;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -19,7 +21,10 @@ public class SalaryController {
 	
 	@ApiOperation(value = "获取Salary信息" ,  notes="获取工资信息")
 	@RequestMapping(method = RequestMethod.GET)
-	public String getSalary() {
-		return "This is salary Info...";
+	public InfoView getSalary() {
+		InfoView view = new InfoView();
+		view.setInfo("This is salary Info...");
+		return view;
+	
 	}
 }
