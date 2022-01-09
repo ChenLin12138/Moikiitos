@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { FeedService } from 'src/app/services/feed.service';
 import { MenuService } from 'src/app/services/menu.service';
 import { UserFeed } from '../../classes/userfeed'; 
-import { ChildrenMenu } from 'src/app/classes/childrenMenu';
 
 @Component({
   selector: 'app-main',
@@ -80,7 +79,6 @@ export class MainComponent implements OnInit {
   userFeed : UserFeed = new UserFeed();
   testuserId : number;
 
-
   ngOnInit(): void {
 
     this.feedService.getFeeds(Number(localStorage.getItem('user_id'))).subscribe(
@@ -95,12 +93,13 @@ export class MainComponent implements OnInit {
       result => {
         for(var i = 0; i < result.length ; i ++){
           console.log("path is="+result[i].path);
-          var cm : ChildrenMenu = new ChildrenMenu();
-          cm.level = 2;
-          cm.icon = "";
-          cm.disabled = false;
-          cm.selected = false;
-          cm.title = result[i].path;
+          var cm = {
+            level : 2,
+            icon  : "",
+            disabled : false,
+            selected : false,
+            title : result[i].path
+          };
           this.menus[2].children.push(cm);    
         }
       }
