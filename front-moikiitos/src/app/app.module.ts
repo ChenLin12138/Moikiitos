@@ -21,6 +21,8 @@ import { RegisterComponent } from './components/user/register/register.component
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { TestComponent } from './components/test/test.component';
+import { TrainComponent } from './components/train/train.component';
+import { SalaryComponent } from './components/salary/salary.component';
 
 
 registerLocaleData(zh);
@@ -41,6 +43,8 @@ export function tokenGetter() {
     DashboardComponent,
     BreadcrumbComponent,
     TestComponent,
+    TrainComponent,
+    SalaryComponent,
   ],
 
   imports: [

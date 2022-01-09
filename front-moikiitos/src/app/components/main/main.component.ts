@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FeedService } from 'src/app/services/feed.service';
 import { MenuService } from 'src/app/services/menu.service';
 import { UserFeed } from '../../classes/userfeed'; 
+import { ChildrenMenu } from 'src/app/classes/childrenMenu';
 
 @Component({
   selector: 'app-main',
@@ -16,14 +17,6 @@ export class MainComponent implements OnInit {
 
   mode = false;
   dark = false;
-  
-  childrenMenu = {
-    level : 2,
-    title: 'oper1',
-    icon: '',
-    selected: false,
-    disabled: false
-  }
 
   menus = [
     {
@@ -101,8 +94,10 @@ export class MainComponent implements OnInit {
     this.menuService.getMenusByUserId(Number(localStorage.getItem('user_id'))).subscribe(
       result => {
         for(var i = 0; i < result.length ; i ++){
-          this.childrenMenu.title = result[i].name;
-          this.menus[2].children.push(this.childrenMenu);    
+          console.log("path is="+result[i].path);
+          var cm : ChildrenMenu = new ChildrenMenu();
+          cm.title = result[i].path;
+          this.menus[2].children.push(cm);    
         }
       }
     );
@@ -122,6 +117,7 @@ export class MainComponent implements OnInit {
     if(title.startsWith('Following')||title.startsWith('Follower')){
       this.router.navigateByUrl('main/fans');
     }else{
+      console.log("navigateByUrl="+"main/"+title.toLowerCase());
       this.router.navigateByUrl('main/'+title.toLowerCase());
     }
   }  

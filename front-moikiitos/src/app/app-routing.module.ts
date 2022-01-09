@@ -7,6 +7,8 @@ import { ChatComponent } from './components/chat/chat.component';
 import { FansComponent } from './components/fans/fans.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TrainComponent } from './components/train/train.component';
+import { SalaryComponent } from './components/salary/salary.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,16 @@ const routes: Routes = [
         , data : { breadcrumb : 'fans'}
         , component : FansComponent
       }
+      ,{
+        path : 'train'
+        , data : { breadcrumb : 'train'}
+        , component : TrainComponent
+      }
+      ,{
+        path : 'salary'
+        , data : { breadcrumb : 'salary'}
+        , component : SalaryComponent
+      }
     ] 
   }
   ,{ path: 'user/register', component: RegisterComponent, pathMatch: 'full' }
@@ -36,6 +48,14 @@ const routes: Routes = [
       ,{
         path : 'fans',
         component : FansComponent
+      }
+      ,{
+        path : 'salary',
+        component : SalaryComponent
+      }
+      ,{
+        path : 'train',
+        component : TrainComponent
       }
     ] 
    }
