@@ -40,10 +40,6 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 		
 		http.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/v1/moikiitos/**").authenticated()
 		.and()
-//		.authorizeRequests().antMatchers(HttpMethod.POST,"/v1/moikiitos/user/").permitAll()
-//		.and()
-//		.authorizeRequests().antMatchers(HttpMethod.POST,"/v1/moikiitos/**").authenticated()
-//		.and()
 		.authorizeRequests()
 		.withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
           @Override
